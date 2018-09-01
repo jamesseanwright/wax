@@ -1,7 +1,7 @@
 {
   "name": "web-audio-x",
   "version": "0.0.1",
-  "description": "A component-driven abstraction of the Web Audio API intended to be targeted by JSX",
+  "description": "A component-driven abstraction of the Web Audio API, intended to be targeted by JSX",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest"
