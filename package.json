@@ -1,0 +1,32 @@
+{
+  "name": "web-audio-x",
+  "version": "0.0.1",
+  "description": "A component-driven abstraction of the Web Audio API intended to be targeted by JSX",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesseanwright/web-audio-x.git"
+  },
+  "keywords": [
+    "web",
+    "audio",
+    "api",
+    "components",
+    "jsx",
+    "react"
+  ],
+  "author": "James Wright <james@jamesswright.co.uk>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamesseanwright/web-audio-x/issues"
+  },
+  "homepage": "https://github.com/jamesseanwright/web-audio-x#readme",
+  "devDependencies": {
+    "@babel/cli": "7.0.0",
+    "@babel/core": "7.0.0",
+    "@babel/plugin-transform-react-jsx": "7.0.0"
+  }
+}
