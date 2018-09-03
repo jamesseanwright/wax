@@ -1,0 +1,7 @@
+{
+    "plugins": [
+        ["@babel/transform-react-jsx", {
+            "pragma": "createAudioElement"
+        }]
+    ]
+}

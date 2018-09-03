@@ -9,6 +9,7 @@ class Oscillator extends AudioComponent {
             type,
             onended,
             startTime = 0,
+            endTime,
             // TODO: periodic wave, inherited props
         } = this.props;
 
@@ -19,7 +20,11 @@ class Oscillator extends AudioComponent {
         node.type = type;
         node.onended = onended;
 
-        node.start(startTime);
+        node.start(context.currentTime + startTime);
+
+        if (endTime) {
+            node.stop(context.currentTime + endTime);
+        }
 
         return node;
     }
