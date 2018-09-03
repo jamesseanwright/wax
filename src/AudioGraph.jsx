@@ -1,22 +1,21 @@
-import Destination from './Destination';
+import AudioContext from './AudioContext';
 
-class AudioGraph {
+class AudioGraph extends AudioComponent {
     constructor({ audioContext = new AudioContext() }) {
         this.audioContext = audioContext;
     }
 
     render() {
-        const { children } = this.props;
-        const destination = <Destination node={this.audioContext.destination} />;
+        const context = <AudioContext audioContext={this.audioContext} />
 
-        [...children, destination].reduce((sourceElement, targetElement) => {
-            const sourceNode = sourceElement.render(); // TODO: move to renderer
-            const targetNode = targetElement.render();
+        return [
+            context,
+            ...this.props.children,
+        ];
+    }
 
-            sourceNode.connect(targetNode);
-
-            return targetNode;
-        });
+    isAudioGraph() {
+        return true;
     }
 }
 
