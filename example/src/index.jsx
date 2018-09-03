@@ -14,5 +14,5 @@ renderAudioGraph(
         />
         <Gain gain={0.6} />
         <StereoPanner pan={-0.3} />
-    </AudioGraph>,
+    </AudioGraph>
 );
