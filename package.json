@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "babel src --out-dir dist",
-    "build-example": "babel example/src --out-dir example/dist && cp -r example/src/*.{html,mp3} example/dist",
+    "build-example": "mkdir -p example/dist && rm -rf example/dist/* && rollup -c && cp -r example/src/*.{html,mp3} example/dist",
     "test": "eslint src && jest"
   },
   "repository": {
@@ -31,6 +31,9 @@
     "@babel/core": "7.0.0",
     "@babel/plugin-transform-react-jsx": "7.0.0",
     "eslint": "5.5.0",
-    "eslint-plugin-react": "7.11.1"
+    "eslint-plugin-react": "7.11.1",
+    "rollup": "0.65.0",
+    "rollup-plugin-babel": "4.0.2",
+    "rollup-plugin-node-resolve": "3.3.0"
   }
 }

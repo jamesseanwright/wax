@@ -1,4 +1,6 @@
-import AudioContext from './AudioContext';
+/* This simply returns children at the,
+ * moment but will become more involved as
+ * we ultimately support complex graphs */
 
 class AudioGraph extends AudioComponent {
     constructor({ audioContext = new AudioContext() }) {
@@ -6,12 +8,7 @@ class AudioGraph extends AudioComponent {
     }
 
     render() {
-        const context = <AudioContext audioContext={this.audioContext} />
-
-        return [
-            context,
-            ...this.props.children,
-        ];
+        return this.props.children;
     }
 
     isAudioGraph() {
