@@ -4,4 +4,4 @@ class AudioComponent {
     }
 }
 
-export default AudioComponent
+export default AudioComponent;

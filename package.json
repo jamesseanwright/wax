@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src --out-dir dist",
     "build-example": "babel example/src --out-dir example/dist && cp -r example/src/*.{html,mp3} example/dist",
-    "test": "jest"
+    "test": "eslint src && jest"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,8 @@
   "devDependencies": {
     "@babel/cli": "7.0.0",
     "@babel/core": "7.0.0",
-    "@babel/plugin-transform-react-jsx": "7.0.0"
+    "@babel/plugin-transform-react-jsx": "7.0.0",
+    "eslint": "5.5.0",
+    "eslint-plugin-react": "7.11.1"
   }
 }

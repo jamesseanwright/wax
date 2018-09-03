@@ -10,3 +10,5 @@ class StereoPanner extends AudioComponent {
         return node;
     }
 }
+
+export default StereoPanner;
