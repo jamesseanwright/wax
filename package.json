@@ -31,6 +31,7 @@
     "@babel/cli": "7.0.0",
     "@babel/core": "7.0.0",
     "@babel/plugin-transform-react-jsx": "7.0.0",
+    "@babel/preset-env": "7.0.0",
     "eslint": "5.5.0",
     "eslint-plugin-react": "7.11.1",
     "node-static": "0.7.10",

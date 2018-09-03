@@ -1,4 +1,5 @@
 import {
+    createAudioGraph,
     renderAudioGraph,
     AudioGraph,
     Oscillator,

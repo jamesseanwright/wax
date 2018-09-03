@@ -1,9 +1,8 @@
 import AudioComponent from './AudioComponent';
 
 class Oscillator extends AudioComponent {
-    render() {
+    render(audioContext) {
         const {
-            context,
             detune,
             frequency,
             type,
@@ -13,7 +12,7 @@ class Oscillator extends AudioComponent {
             // TODO: periodic wave, inherited props
         } = this.props;
 
-        const node = context.createOscillator();
+        const node = audioContext.createOscillator();
 
         node.detune = detune;
         node.frequency = frequency;

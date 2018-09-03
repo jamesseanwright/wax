@@ -1,9 +1,9 @@
 import AudioComponent from './AudioComponent';
 
 class StereoPanner extends AudioComponent {
-    render() {
-        const { context, pan } = this.props;
-        const node = context.createStereoPanner();
+    render(audioContext) {
+        const { pan } = this.props;
+        const node = audioContext.createStereoPanner();
 
         node.pan.value = pan;
 

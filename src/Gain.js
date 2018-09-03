@@ -1,9 +1,9 @@
 import AudioComponent from './AudioComponent';
 
 class Gain extends AudioComponent {
-    render() {
-        const { context, gain } = this.props;
-        const node = context.createGain();
+    render(audioContext) {
+        const { gain } = this.props;
+        const node = audioContext.createGain();
 
         node.gain.value = gain;
 

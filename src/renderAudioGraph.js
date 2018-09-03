@@ -6,8 +6,8 @@ const renderAudioGraph = (rootElement, context = new AudioContext()) => {
     const children = rootElement.render();
 
     const target = children.reduce((sourceElement, targetElement) => {
-        const sourceNode = sourceElement.render();
-        const targetNode = targetElement.render();
+        const sourceNode = sourceElement.render(context);
+        const targetNode = targetElement.render(context);
 
         sourceNode.connect(targetNode);
 
