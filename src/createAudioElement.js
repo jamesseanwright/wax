@@ -1,11 +1,11 @@
-const createAudioElement = (Component, props, children) =>
+const createAudioElement = (Component, props, ...children) =>
     audioContext =>
         Component.isClassBased
             ? new Component({
                 ...props,
                 audioContext,
                 children,
-            })
+            }).render()
             : Component({
                 ...props,
                 audioContext,

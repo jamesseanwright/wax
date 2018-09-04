@@ -1,6 +1,6 @@
 const Oscillator = ({
     audioContext,
-    detune,
+    detune = 0,
     frequency,
     type,
     onended,
@@ -9,8 +9,8 @@ const Oscillator = ({
 }) => {
     const node = audioContext.createOscillator();
 
-    node.detune = detune;
-    node.frequency = frequency;
+    node.detune.value = detune;
+    node.frequency.value = frequency;
     node.type = type;
     node.onended = onended;
 

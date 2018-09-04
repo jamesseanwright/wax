@@ -1,11 +1,12 @@
 import {
-    createAudioGraph,
+    createAudioElement,
     renderAudioGraph,
     AudioGraph,
     Oscillator,
     Gain,
     StereoPanner,
 } from '../..';
+
 
 renderAudioGraph(
     <AudioGraph>
