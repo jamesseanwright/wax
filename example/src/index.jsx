@@ -5,7 +5,7 @@ import {
     Oscillator,
     Gain,
     StereoPanner,
-} from '../../';
+} from '../..';
 
 renderAudioGraph(
     <AudioGraph>

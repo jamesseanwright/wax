@@ -2,13 +2,17 @@
  * moment but will become more involved as
  * we ultimately support complex graphs */
 
+import Destination from './Destination';
+import AudioComponent from './AudioComponent';
+
 class AudioGraph extends AudioComponent {
     render() {
-        return this.props.children;
-    }
+        const { children, audioContext } = this.props;
 
-    isAudioGraph() {
-        return true;
+        return [
+            ...children,
+            <Destination destination={audioContext.destination} />,
+        ];
     }
 }
 

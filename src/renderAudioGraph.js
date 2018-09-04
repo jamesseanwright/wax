@@ -1,20 +1,16 @@
-const renderAudioGraph = (rootElement, context = new AudioContext()) => {
-    if (!rootElement.isAudioGraph()) {
-        throw new Error('Root element passed to renderAudioGraph must be <AudioGraph />!');
-    }
+const renderAudioGraph = (renderElement, context = new AudioContext()) => {
+    const result = renderElement(context);
 
-    const children = rootElement.render();
+    return Array.isArray(result)
+        ? result.reduce((sourceElement, targetElement) => {
+            const sourceNode = renderAudioGraph(sourceElement, context);
+            const targetNode = renderAudioGraph(targetElement, context);
 
-    const target = children.reduce((sourceElement, targetElement) => {
-        const sourceNode = sourceElement.render(context);
-        const targetNode = targetElement.render(context);
+            sourceNode.connect(targetNode);
 
-        sourceNode.connect(targetNode);
-
-        return targetNode;
-    });
-
-    target.connect(context.destination);
+            return targetNode;
+        })
+        : result;
 };
 
 export default renderAudioGraph;

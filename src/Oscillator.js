@@ -1,32 +1,26 @@
-import AudioComponent from './AudioComponent';
+const Oscillator = ({
+    audioContext,
+    detune,
+    frequency,
+    type,
+    onended,
+    startTime = 0,
+    endTime,
+}) => {
+    const node = audioContext.createOscillator();
 
-class Oscillator extends AudioComponent {
-    render(audioContext) {
-        const {
-            detune,
-            frequency,
-            type,
-            onended,
-            startTime = 0,
-            endTime,
-            // TODO: periodic wave, inherited props
-        } = this.props;
+    node.detune = detune;
+    node.frequency = frequency;
+    node.type = type;
+    node.onended = onended;
 
-        const node = audioContext.createOscillator();
+    node.start(audioContext.currentTime + startTime);
 
-        node.detune = detune;
-        node.frequency = frequency;
-        node.type = type;
-        node.onended = onended;
-
-        node.start(context.currentTime + startTime);
-
-        if (endTime) {
-            node.stop(context.currentTime + endTime);
-        }
-
-        return node;
+    if (endTime) {
+        node.stop(audioContext.currentTime + endTime);
     }
-}
+
+    return node;
+};
 
 export default Oscillator;

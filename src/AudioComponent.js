@@ -1,10 +1,10 @@
 class AudioComponent {
-    constructor(props) {
-        this.props = props;
+    static get isClassBased() {
+        return true;
     }
 
-    isAudioGraph() {
-        return false;
+    constructor(props) {
+        this.props = props;
     }
 }
 

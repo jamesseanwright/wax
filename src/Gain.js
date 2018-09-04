@@ -1,14 +1,9 @@
-import AudioComponent from './AudioComponent';
+const Gain = ({ audioContext, gain }) => {
+    const node = audioContext.createGain();
 
-class Gain extends AudioComponent {
-    render(audioContext) {
-        const { gain } = this.props;
-        const node = audioContext.createGain();
+    node.gain.value = gain;
 
-        node.gain.value = gain;
-
-        return node;
-    }
-}
+    return node;
+};
 
 export default Gain;
