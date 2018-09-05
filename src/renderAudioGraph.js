@@ -8,7 +8,7 @@ const renderAudioGraph = (renderElement, context = new AudioContext()) => {
 
             sourceNode.connect(targetNode);
 
-            return targetNode;
+            return targetElement;
         })
         : result;
 };
