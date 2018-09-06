@@ -1,3 +1,5 @@
+import assignAudioParam from '../paramMutations/assignAudioParam';
+
 const Oscillator = ({
     audioContext,
     detune = 0,
@@ -9,8 +11,8 @@ const Oscillator = ({
 }) => {
     const node = audioContext.createOscillator();
 
-    node.detune.value = detune;
-    node.frequency.value = frequency;
+    assignAudioParam(node.detune, detune, audioContext.currentTime);
+    assignAudioParam(node.frequency, frequency, audioContext.currentTime);
     node.type = type;
     node.onended = onended;
 

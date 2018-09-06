@@ -4,7 +4,7 @@
 
 /** @jsx createAudioElement */
 
-import createAudioElement from './createAudioElement';
+import createAudioElement from '../createAudioElement';
 import Destination from './Destination';
 import AudioComponent from './AudioComponent';
 
