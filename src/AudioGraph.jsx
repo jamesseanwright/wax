@@ -2,6 +2,8 @@
  * moment but will become more involved as
  * we ultimately support complex graphs */
 
+/** @jsx createAudioElement */
+
 import createAudioElement from './createAudioElement';
 import Destination from './Destination';
 import AudioComponent from './AudioComponent';

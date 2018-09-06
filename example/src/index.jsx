@@ -1,3 +1,5 @@
+/** @jsx createAudioElement */
+
 import {
     createAudioElement,
     renderAudioGraph,
@@ -13,6 +15,7 @@ renderAudioGraph(
             frequency={440}
             type="square"
         />
-        <Gain gain={1} />
+        <Gain gain={0.6} />
+        <StereoPanner pan={-0.3} />
     </AudioGraph>
 );
