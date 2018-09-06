@@ -13,6 +13,6 @@ renderAudioGraph(
             frequency={440}
             type="square"
         />
-        <Gain gain={0.6} />
-    </AudioGraph>,
+        <Gain gain={1} />
+    </AudioGraph>
 );
