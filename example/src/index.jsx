@@ -7,13 +7,17 @@ import {
     Oscillator,
     Gain,
     StereoPanner,
+    setValueAtTime,
     exponentialRampToValueAtTime,
 } from 'web-audio-x';
 
 renderAudioGraph(
     <AudioGraph>
         <Oscillator
-            frequency={exponentialRampToValueAtTime(200, 3)} // TODO: support change sequences (array)
+            frequency={[
+                setValueAtTime(200, 0),
+                exponentialRampToValueAtTime(800, 3),
+            ]}
             type="square"
             endTime={3}
         />
