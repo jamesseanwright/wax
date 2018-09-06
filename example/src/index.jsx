@@ -7,7 +7,7 @@ import {
     Oscillator,
     Gain,
     StereoPanner,
-} from '../..';
+} from 'web-audio-x';
 
 renderAudioGraph(
     <AudioGraph>
