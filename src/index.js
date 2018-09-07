@@ -5,5 +5,4 @@ export { default as AudioBufferSource } from './components/AudioBufferSource';
 export { default as Gain } from './components/Gain';
 export { default as Oscillator } from './components/Oscillator';
 export { default as StereoPanner } from './components/StereoPanner';
-export { default as exponentialRampToValueAtTime } from './paramMutations/exponentialRampToValueAtTime';
-export { default as setValueAtTime } from './paramMutations/setValueAtTime';
+export * from './paramMutations';
