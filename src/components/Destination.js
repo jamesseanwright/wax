@@ -2,6 +2,6 @@
  * the audio context's destination
  * as a Web Audio X Component. */
 
-const Destination = ({ destination }) => destination;
+const Destination = ({ audioContext }) => audioContext.destination;
 
 export default Destination;

@@ -1,5 +1,6 @@
 import assignAudioParam from '../paramMutations/assignAudioParam';
 
+// TODO: higher-order component to compose source element
 const AudioBufferSource = ({
     audioContext,
     buffer,
@@ -8,7 +9,7 @@ const AudioBufferSource = ({
     loopStart = 0,
     loopEnd = 0,
     playbackRate,
-    startTime,
+    startTime = 0,
     endTime,
 }) => {
     const node = audioContext.createBufferSource();

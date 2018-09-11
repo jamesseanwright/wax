@@ -4,6 +4,10 @@ const isAudioParamSequence = value =>
     );
 
 const assignAudioParam = (param, value, currentTime) => {
+    if (!value) {
+        return;
+    }
+
     if (isAudioParamSequence(value)) {
         value.forEach(paramMutation => paramMutation(param, currentTime));
     } else {
