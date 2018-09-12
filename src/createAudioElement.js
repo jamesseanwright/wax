@@ -1,6 +1,8 @@
+const isAudioNode = result => result instanceof AudioNode;
+
 const createAudioElement = (Component, props, ...children) =>
-    audioContext =>
-        Component.isClassBased
+    audioContext => {
+        const result = Component.isClassBased
             ? new Component({
                 children,
                 audioContext,
@@ -11,5 +13,11 @@ const createAudioElement = (Component, props, ...children) =>
                 audioContext,
                 ...props,
             });
+
+        return isAudioNode(result)
+            ? result
+            // required for deeply-nested element instances e.g. HOCs
+            : createAudioElement(result, props, children)(audioContext);
+    };
 
 export default createAudioElement;

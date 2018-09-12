@@ -1,6 +1,6 @@
+import asSourceNode from './asSourceNode';
 import assignAudioParam from '../paramMutations/assignAudioParam';
 
-// TODO: higher-order component to compose source element
 const AudioBufferSource = ({
     audioContext,
     buffer,
@@ -9,8 +9,7 @@ const AudioBufferSource = ({
     loopStart = 0,
     loopEnd = 0,
     playbackRate,
-    startTime = 0,
-    endTime,
+    enqueue,
 }) => {
     const node = audioContext.createBufferSource();
 
@@ -21,13 +20,9 @@ const AudioBufferSource = ({
     assignAudioParam(node.detune, detune, audioContext.currentTime);
     assignAudioParam(node.playbackRate, playbackRate, audioContext.currentTime);
 
-    node.start(audioContext.currentTime + startTime);
-
-    if (endTime) {
-        node.stop(audioContext.currentTime + endTime);
-    }
+    enqueue(node);
 
     return node;
 };
 
-export default AudioBufferSource;
+export default asSourceNode(AudioBufferSource);

@@ -1,3 +1,4 @@
+import asSourceNode from './asSourceNode';
 import assignAudioParam from '../paramMutations/assignAudioParam';
 
 const Oscillator = ({
@@ -6,8 +7,7 @@ const Oscillator = ({
     frequency,
     type,
     onended,
-    startTime = 0,
-    endTime,
+    enqueue,
 }) => {
     const node = audioContext.createOscillator();
 
@@ -16,13 +16,9 @@ const Oscillator = ({
     node.type = type;
     node.onended = onended;
 
-    node.start(audioContext.currentTime + startTime);
-
-    if (endTime) {
-        node.stop(audioContext.currentTime + endTime);
-    }
+    enqueue(node);
 
     return node;
 };
 
-export default Oscillator;
+export default asSourceNode(Oscillator);
