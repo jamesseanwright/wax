@@ -1,6 +1,6 @@
 export { default as createAudioElement } from './createAudioElement';
 export { default as renderAudioGraph } from './renderAudioGraph';
-export { default as AggregateSource } from './components/AggregateSource';
+export { default as Aggregation } from './components/Aggregation';
 export { default as AudioGraph } from './components/AudioGraph';
 export { default as AudioBufferSource } from './components/AudioBufferSource';
 export { default as Gain } from './components/Gain';

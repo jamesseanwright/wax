@@ -4,7 +4,7 @@ import {
     createAudioElement,
     renderAudioGraph,
     AudioGraph,
-    AggregateSource,
+    Aggregation,
     AudioBufferSource,
     Oscillator,
     Gain,
@@ -27,8 +27,7 @@ const audioContext = new AudioContext();
 
     renderAudioGraph(
         <AudioGraph>
-            {/* TODO: rename to <Aggregation />? */}
-            <AggregateSource>
+            <Aggregation>
                 <Oscillator
                     frequency={[
                         setValueAtTime(200, 0),
@@ -37,10 +36,14 @@ const audioContext = new AudioContext();
                     type="square"
                     endTime={3}
                 />
+                <Gain gain={0.2} />
+                <StereoPanner pan={-1} />
+            </Aggregation>
+            <Aggregation>
                 <AudioBufferSource buffer={yodel} />
-            </AggregateSource>
-            <Gain gain={0.6} />
-            <StereoPanner pan={-0.3} />
+                <Gain gain={1.4} />
+                <StereoPanner pan={1} />
+            </Aggregation>
             <Destination />
         </AudioGraph>,
         audioContext,
