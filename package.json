@@ -32,6 +32,8 @@
     "@babel/core": "7.0.0",
     "@babel/plugin-proposal-object-rest-spread": "7.0.0",
     "@babel/plugin-transform-react-jsx": "7.0.0",
+    "@babel/preset-react": "7.0.0",
+    "babel-plugin-transform-inline-environment-variables": "0.4.3",
     "eslint": "5.5.0",
     "eslint-plugin-react": "7.11.1",
     "node-static": "0.7.10",
