@@ -27,7 +27,7 @@ const audioContext = new AudioContext();
 
     renderAudioGraph(
         <AudioGraph>
-            {/* <Aggregation>
+            <Aggregation>
                 <Oscillator
                     frequency={[
                         setValueAtTime(200, 0),
@@ -38,7 +38,7 @@ const audioContext = new AudioContext();
                 />
                 <Gain gain={0.2} />
                 <StereoPanner pan={-1} />
-            </Aggregation> */}
+            </Aggregation>
             <Aggregation>
                 <AudioBufferSource
                     buffer={yodel}
