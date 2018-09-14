@@ -43,24 +43,23 @@ class Slider extends React.Component {
     }
 }
 
-ReactDOM.render( // no reconciliation should happen. Better way to mix renderers?!
-    <>
-        <Slider
-            min={40}
-            max={800}
-        >
-            {value => renderAudioGraph(
-                <AudioGraph>
-                    <Oscillator
-                        frequency={value}
-                        type="square"
-                        endTime={3}
-                    />
-                    <Gain gain={0.2} />
-                    <StereoPanner pan={-1} />
-                    <Destination />
-                </AudioGraph>,
-            )}
-        </Slider>
-    </>
+ReactDOM.render(
+    <Slider
+        min={40}
+        max={800}
+    >
+        {value => renderAudioGraph(
+            <AudioGraph>
+                <Oscillator
+                    frequency={value}
+                    type="square"
+                    endTime={3}
+                />
+                <Gain gain={0.2} />
+                <StereoPanner pan={-1} />
+                <Destination />
+            </AudioGraph>,
+        )}
+    </Slider>,
+    document.querySelector('#react-target'),
 );
