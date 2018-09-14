@@ -1,12 +1,10 @@
 /** @jsx createElement */
 
-
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as wax from 'web-audio-x';
-import combineElementCreators from './combineElementCreators';
 
-const {
+import {
+    isWaxComponent,
     createAudioElement,
     renderAudioGraph,
     AudioGraph,
@@ -14,10 +12,12 @@ const {
     Gain,
     StereoPanner,
     Destination,
-} = wax;
+} from 'web-audio-x';
+
+import combineElementCreators from './combineElementCreators';
 
 const createElement = combineElementCreators(
-    [Component => Component in wax, createAudioElement],
+    [isWaxComponent, createAudioElement],
     [() => true, React.createElement],
 );
 
@@ -28,7 +28,7 @@ class Slider extends React.Component {
     }
 
     onChange({ target }) {
-        this.props.children(target.value);
+        renderAudioGraph(this.props.children(target.value));
     }
 
     render() {
@@ -37,7 +37,7 @@ class Slider extends React.Component {
                 type="range"
                 min={this.props.min}
                 max={this.props.max}
-                change={this.onChange}
+                onChange={this.onChange}
             />
         );
     }
@@ -48,18 +48,17 @@ ReactDOM.render(
         min={40}
         max={800}
     >
-        {value => renderAudioGraph(
+        {value =>
             <AudioGraph>
                 <Oscillator
                     frequency={value}
                     type="square"
-                    endTime={3}
                 />
                 <Gain gain={0.2} />
                 <StereoPanner pan={-1} />
                 <Destination />
-            </AudioGraph>,
-        )}
+            </AudioGraph>
+        }
     </Slider>,
     document.querySelector('#react-target'),
 );
