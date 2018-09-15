@@ -1,4 +1,5 @@
 const isAudioNode = result => result instanceof AudioNode;
+const areAudioNodes = results => Array.isArray(results) && results.every(isAudioNode);
 
 const createAudioElement = (Component, props, ...children) =>
     audioContext => {
@@ -19,7 +20,9 @@ const createAudioElement = (Component, props, ...children) =>
                 ...props,
             });
 
-        return result;
+        return isAudioNode(result) || areAudioNodes(result) // TODO: confirm this
+            ? result
+            : result(audioContext); // child element
     };
 
 export default createAudioElement;
