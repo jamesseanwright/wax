@@ -6,23 +6,16 @@
 /** @jsx createAudioElement */
 
 import createAudioElement from '../createAudioElement';
-import AudioGraph from './AudioGraph';
+import ChannelMerger from './ChannelMerger';
 
-const Aggregation = ({ children, audioContext }) => {
-    const getSourceNode = (
-        <AudioGraph
-            audioContext={audioContext}
-            children={children}
-        />
-    );
-
-    // TODO: this is a bit weird!
-    const sourceNode = getSourceNode();
-    const merger = audioContext.createChannelMerger(1);
-
-    sourceNode.connect(merger);
-
-    return merger;
-};
+const Aggregation = ({ children }) => (
+    <ChannelMerger inputs={1}>
+        {connectToChannel => {
+            children.forEach(node => {
+                connectToChannel(node, 0);
+            });
+        }}
+    </ChannelMerger>
+);
 
 export default Aggregation;

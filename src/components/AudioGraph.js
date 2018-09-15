@@ -1,16 +1,15 @@
-/* This simply returns children at the,
- * moment but will become more involved as
- * we ultimately support complex graphs */
+import AudioComponent from './AudioComponent';
 
-const AudioGraph = ({ children, audioContext }) =>
-    children.reduce((sourceNode, renderElement) => {
-        const targetNode = renderElement(audioContext);
+class AudioGraph extends AudioComponent {
+    get isAudioGraph() {
+        return true;
+    }
 
-        if (sourceNode) {
-            sourceNode.connect(targetNode);
-        }
+    render() {
+        // return reduceNodes(this.props.children);
+        return this.props.children;
+    }
+}
 
-        return targetNode;
-    }, null);
 
 export default AudioGraph;
