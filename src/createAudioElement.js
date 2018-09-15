@@ -2,27 +2,24 @@ const isAudioNode = result => result instanceof AudioNode;
 
 const createAudioElement = (Component, props, ...children) =>
     audioContext => {
+        /* we want to render children first so the nodes
+         * can be directly manipulated by their parents */
+        const renderChildren = children =>
+            children.map(renderer => renderer(audioContext));
+
         const result = Component.isClassBased
             ? new Component({
-                children,
+                children: renderChildren(children),
                 audioContext,
                 ...props,
             }).render()
             : Component({
-                children,
+                children: renderChildren(children),
                 audioContext,
                 ...props,
             });
 
-        if (isAudioNode(result)) {
-            return result;
-        }
-
-        if (Array.isArray(result)) {
-            return result.map(renderer => renderer(audioContext));
-        }
-
-        return result(audioContext);
+        return result;
     };
 
 export default createAudioElement;
