@@ -15,7 +15,7 @@ import {
     Destination,
     setValueAtTime,
     exponentialRampToValueAtTime,
-} from 'web-audio-x';
+} from 'wax-core';
 
 renderAudioGraph(
     <AudioGraph>
