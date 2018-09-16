@@ -1,8 +1,10 @@
 import reduceNodes from './reduceNodes';
 
-const renderAudioGraph = (render, context = new AudioContext()) => {
-    const result = render(context);
-    return reduceNodes(result); // TODO: return update/destroy func here?
+export const renderAudioGraph = (createGraphElement, context = new AudioContext()) => {
+    const nodes = createGraphElement(context);
+    return reduceNodes(nodes);
 };
 
-export default renderAudioGraph;
+export const renderPersistentAudioGraph = (createGraphElement, context = new AudioContext()) => {
+
+};
