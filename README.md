@@ -1,3 +1,8 @@
+# Wax
+
+A component-driven library to abstract the Web Audio API, intended to be targeted by JSX.
+
+```jsx
 /** @jsx createAudioElement */
 
 import {
@@ -10,7 +15,7 @@ import {
     Destination,
     setValueAtTime,
     exponentialRampToValueAtTime,
-} from 'wax-core';
+} from 'web-audio-x';
 
 renderAudioGraph(
     <AudioGraph>
@@ -27,3 +32,8 @@ renderAudioGraph(
         <Destination />
     </AudioGraph>
 );
+```
+
+## Getting Started
+
+TODO

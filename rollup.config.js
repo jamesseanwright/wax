@@ -20,7 +20,7 @@ export default {
         resolve(),
         commonjs(), // for React and ReactDOM
         alias({
-            'web-audio-x': resolvePath(__dirname, 'dist', 'index.js'),
+            'wax-core': resolvePath(__dirname, 'dist', 'index.js'),
         }),
         babel(
             entry === 'withReact'

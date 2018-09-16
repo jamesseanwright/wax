@@ -12,7 +12,7 @@ import {
     Destination,
     setValueAtTime,
     exponentialRampToValueAtTime,
-} from 'web-audio-x';
+} from 'wax-core';
 
 const fetchAsAudioBuffer = async (url, audioContext) => {
     const response = await fetch(url);

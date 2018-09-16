@@ -12,7 +12,7 @@ import {
     Gain,
     StereoPanner,
     Destination,
-} from 'web-audio-x';
+} from 'wax-core';
 
 import combineElementCreators from './combineElementCreators';
 
