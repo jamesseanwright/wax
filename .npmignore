@@ -1,7 +1,8 @@
 src
-test
+example
 .babelrc
 .eslintignore
 .eslintrc.js
 .nvmrc
 README.md
+rollup.config.js
