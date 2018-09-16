@@ -1,7 +1,22 @@
+const memoiseCreator = func => {
+    let result;
+
+    return audioContext => {
+        if (!result) {
+            result = func(audioContext);
+        }
+
+        return result;
+    };
+};
+
 /* this decorator is to distinguish
  * child element creators from other
- * child functions i.e. render props */
-const asElementCreator = func => func.isElementCreator = true && func;
+ * child functions i.e. render props.
+ * It also reconciles nodes that have
+ * already been rendered. */
+const asElementCreator = func =>
+    func.isElementCreator = true && memoiseCreator(func);
 
 const createAudioElement = (Component, props, ...children) =>
     asElementCreator(audioContext => {

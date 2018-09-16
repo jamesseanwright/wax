@@ -1,7 +1,7 @@
 const Gain = ({ audioContext, gain }) => {
     const node = audioContext.createGain();
 
-    node.gain.value = gain; // TODO: support mutations
+    node.gain.value = gain;
 
     return node;
 };
