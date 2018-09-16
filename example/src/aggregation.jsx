@@ -25,6 +25,8 @@ const audioContext = new AudioContext();
 (async () => {
     const yodel = await fetchAsAudioBuffer('/yodel.mp3', audioContext);
 
+    const stereoPanner = <StereoPanner pan={0.4} />;
+
     renderAudioGraph(
         <AudioGraph>
             <Aggregation>
@@ -37,7 +39,7 @@ const audioContext = new AudioContext();
                     endTime={3}
                 />
                 <Gain gain={0.2} />
-                <StereoPanner pan={-1} />
+                {stereoPanner}
             </Aggregation>
             <Aggregation>
                 <AudioBufferSource
@@ -45,8 +47,9 @@ const audioContext = new AudioContext();
                     detune={exponentialRampToValueAtTime(-5000, 1)}
                 />
                 <Gain gain={1.4} />
-                <StereoPanner pan={1} />
+                {stereoPanner}
             </Aggregation>
+            {stereoPanner}
             <Destination />
         </AudioGraph>,
         audioContext,
