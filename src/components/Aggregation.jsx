@@ -6,7 +6,6 @@ import NoOp from './NoOp';
 
 const Aggregation = ({ children }) => {
     reduceNodes(children);
-
     return <NoOp />;
 };
 

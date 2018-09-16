@@ -15,8 +15,12 @@ const memoiseCreator = func => {
  * child functions i.e. render props.
  * It also reconciles nodes that have
  * already been rendered. */
-const asElementCreator = func =>
-    func.isElementCreator = true && memoiseCreator(func);
+const asElementCreator = func => {
+    const memoisedCreator = memoiseCreator(func);
+
+    memoisedCreator.isElementCreator = true;
+    return memoisedCreator;
+};
 
 const createAudioElement = (Component, props, ...children) =>
     asElementCreator(audioContext => {

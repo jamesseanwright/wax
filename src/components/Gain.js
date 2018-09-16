@@ -1,8 +1,8 @@
+import assignAudioParam from '../paramMutations/assignAudioParam';
+
 const Gain = ({ audioContext, gain }) => {
     const node = audioContext.createGain();
-
-    node.gain.value = gain;
-
+    assignAudioParam(node.gain, gain, audioContext.currentTime);
     return node;
 };
 

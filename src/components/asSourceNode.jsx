@@ -9,7 +9,6 @@ import createAudioElement from '../createAudioElement';
 
 const createEnqueuer = ({ audioContext, startTime = 0, endTime }) =>
     node => {
-        console.log('*****');
         node.start(audioContext.currentTime + startTime);
 
         if (endTime) {

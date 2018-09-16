@@ -1,7 +1,8 @@
+import assignAudioParam from '../paramMutations/assignAudioParam';
+
 const StereoPanner = ({ audioContext, pan }) => {
     const node = audioContext.createStereoPanner();
-
-    node.pan.value = pan; // TODO: support mutations
+    assignAudioParam(node.pan, pan, audioContext.currentTime);
     return node;
 };
 

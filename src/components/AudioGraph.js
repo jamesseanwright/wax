@@ -6,7 +6,6 @@ class AudioGraph extends AudioComponent {
     }
 
     render() {
-        // return reduceNodes(this.props.children);
         return this.props.children;
     }
 }
