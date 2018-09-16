@@ -1,5 +1,5 @@
 {
-  "name": "web-audio-x",
+  "name": "wax",
   "version": "0.0.1",
   "description": "A component-driven abstraction of the Web Audio API, intended to be targeted by JSX",
   "main": "dist/index.js",
