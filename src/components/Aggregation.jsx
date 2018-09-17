@@ -1,12 +1,14 @@
 /** @jsx createAudioElement */
 
 import createAudioElement from '../createAudioElement';
-import reduceNodes from '../reduceNodes';
 import NoOp from './NoOp';
+import AudioGraph from './AudioGraph';
 
-const Aggregation = ({ children }) => {
-    reduceNodes(children);
-    return <NoOp />;
-};
+const Aggregation = ({ children }) => (
+    <AudioGraph>
+        {children}
+        <NoOp />
+    </AudioGraph>
+);
 
 export default Aggregation;

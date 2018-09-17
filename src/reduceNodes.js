@@ -1,12 +1,20 @@
-import { NO_OP }from './components/NoOp';
+import { NO_OP } from './components/NoOp';
 
 const reduceNodes = nodes =>
     nodes.reduce((sourceNode, targetNode) => {
-        if (sourceNode !== NO_OP && targetNode !== NO_OP) {
-            sourceNode.connect(targetNode);
+        const source = Array.isArray(sourceNode)
+            ? reduceNodes(sourceNode)
+            : sourceNode;
+
+        const target = Array.isArray(targetNode)
+            ? reduceNodes(targetNode)
+            : targetNode;
+
+        if (source !== NO_OP && target !== NO_OP) {
+            source.connect(target);
         }
 
-        return targetNode;
+        return target;
     });
 
 export default reduceNodes;
