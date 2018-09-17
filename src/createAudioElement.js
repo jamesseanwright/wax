@@ -1,9 +1,9 @@
 const memoiseCreator = func => {
     let result;
 
-    return audioContext => {
+    return (audioContext, onAudioNodeCreated) => {
         if (!result) {
-            result = func(audioContext);
+            result = func(audioContext, onAudioNodeCreated);
         }
 
         return result;
@@ -23,11 +23,11 @@ const asElementCreator = func => {
 };
 
 const createAudioElement = (Component, props, ...children) =>
-    asElementCreator(audioContext => {
+    asElementCreator((audioContext, onAudioNodeCreated) => {
         const mapResult = result =>
             result.isElementCreator
-                ? result(audioContext)
-                : result;
+                ? result(audioContext, onAudioNodeCreated)
+                : onAudioNodeCreated(result);
 
         /* we want to render children first so the nodes
          * can be directly manipulated by their parents */
