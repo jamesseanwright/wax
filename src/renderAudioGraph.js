@@ -1,16 +1,15 @@
 import reduceNodes from './reduceNodes';
-
-const elementCreatedNoOp = element => element;
+import { createNoOpTree } from './reconciliationTree';
 
 export const renderAudioGraph = (
     createGraphElement,
     context = new AudioContext(),
-    onElementCreated = elementCreatedNoOp
+    reconciliationTree = createNoOpTree(),
 ) => {
-    const nodes = createGraphElement(context, onElementCreated);
+    const nodes = createGraphElement(context, reconciliationTree);
     return reduceNodes(nodes);
 };
 
 export const renderPersistentAudioGraph = (createGraphElement, context) => {
-    // TODO
+    // const
 };

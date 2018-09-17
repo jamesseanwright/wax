@@ -23,11 +23,11 @@ const asElementCreator = func => {
 };
 
 const createAudioElement = (Component, props, ...children) =>
-    asElementCreator((audioContext, onElementCreated) => {
-        const mapResult = result =>
+    asElementCreator((audioContext, reconciliationTree) => {
+        const mapResult = (result, i) =>
             result.isElementCreator
-                ? result(audioContext, onElementCreated)
-                : onElementCreated(result);
+                ? result(audioContext, reconciliationTree.children[i])
+                : reconciliationTree.setValue(result);
 
         /* we want to render children first so the nodes
          * can be directly manipulated by their parents */
