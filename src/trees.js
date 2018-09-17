@@ -1,6 +1,6 @@
 const createSubTree = element => ({
     _element: element,
-    _children: [],
+    _children: new Map(),
 
     get element() {
         return element;
@@ -15,8 +15,8 @@ const createSubTree = element => ({
         return this._children;
     },
 
-    appendChild(child) {
-        this._children = this._children.concat(child);
+    appendChild(creator, element) {
+        this._children.set(creator, element);
     }
 });
 
@@ -32,8 +32,4 @@ export const createNoOpTree = () => ({
     }),
 });
 
-export const createReconciliationTree = () => ({
-    set element(element) {
-        return createSubTree(element);
-    }
-});
+export const createReconciliationTree = () => createSubTree();

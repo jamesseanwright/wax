@@ -1,5 +1,5 @@
 import reduceNodes from './reduceNodes';
-import { createNoOpTree, createReconciliationTree } from './reconciliationTree';
+import { createNoOpTree, createReconciliationTree } from './trees';
 
 export const renderAudioGraph = (
     createGraphElement,

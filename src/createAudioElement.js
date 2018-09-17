@@ -1,29 +1,11 @@
-/* this decorator is to distinguish
- * child element creators from other
- * child functions i.e. render props.
- * It also reconciles nodes that have
- * already been rendered. */
-const asElementCreator = func => {
-    let element;
+// TODO: replace memoisation with tree.
 
-    const creator = (audioContext, reconciliationTree) => {
-        if (!element) {
-            element = func(audioContext, reconciliationTree);
-        }
-
-        return reconciliationTree.value = element;
-    };
-
-    creator.isElementCreator = true;
-    return creator;
-};
-
-const createAudioElement = (Component, props, ...children) =>
-    asElementCreator((audioContext, reconciliationTree) => {
+const createAudioElement = (Component, props, ...children) => {
+    const creator = (audioContext, tree) => {
         const mapResult = (result, i) =>
             result.isElementCreator
-                ? result(audioContext, reconciliationTree.children[i])
-                : result;
+                ? result(audioContext, tree.getChild(i))
+                : tree.setElement(creator, result);
 
         /* we want to render children first so the nodes
          * can be directly manipulated by their parents */
@@ -33,9 +15,13 @@ const createAudioElement = (Component, props, ...children) =>
             Component({
                 children: createChildren(children),
                 audioContext,
+                node: tree.getElement(creator),
                 ...props,
             })
         );
-    });
+    };
+
+    return creator;
+};
 
 export default createAudioElement;

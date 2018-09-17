@@ -10,10 +10,9 @@ const AudioBufferSource = ({
     loopEnd = 0,
     playbackRate,
     enqueue,
+    node = audioContext.createBufferSource(),
 }) => {
-    const node = audioContext.createBufferSource();
-
-    node.buffer = buffer;
+    node.buffer = buffer; // TODO: mechanism for diff updates here
     node.loop = loop;
     node.loopStart = loopStart;
     node.loopEnd = loopEnd;
