@@ -1,25 +1,21 @@
-const memoiseCreator = func => {
-    let result;
-
-    return (audioContext, onAudioNodeCreated) => {
-        if (!result) {
-            result = func(audioContext, onAudioNodeCreated);
-        }
-
-        return result;
-    };
-};
-
 /* this decorator is to distinguish
  * child element creators from other
  * child functions i.e. render props.
  * It also reconciles nodes that have
  * already been rendered. */
 const asElementCreator = func => {
-    const memoisedCreator = memoiseCreator(func);
+    let element;
 
-    memoisedCreator.isElementCreator = true;
-    return memoisedCreator;
+    const creator = (audioContext, reconciliationTree) => {
+        if (!element) {
+            element = func(audioContext, reconciliationTree);
+        }
+
+        return reconciliationTree.value = element;
+    };
+
+    creator.isElementCreator = true;
+    return creator;
 };
 
 const createAudioElement = (Component, props, ...children) =>
@@ -27,7 +23,7 @@ const createAudioElement = (Component, props, ...children) =>
         const mapResult = (result, i) =>
             result.isElementCreator
                 ? result(audioContext, reconciliationTree.children[i])
-                : reconciliationTree.setValue(result);
+                : result;
 
         /* we want to render children first so the nodes
          * can be directly manipulated by their parents */
