@@ -1,16 +1,16 @@
 import reduceNodes from './reduceNodes';
 
-const nodeCreatedNoOp = result => result;
+const elementCreatedNoOp = element => element;
 
 export const renderAudioGraph = (
     createGraphElement,
     context = new AudioContext(),
-    onAudioNodeCreated = nodeCreatedNoOp
+    onElementCreated = elementCreatedNoOp
 ) => {
-    const nodes = createGraphElement(context, onAudioNodeCreated);
+    const nodes = createGraphElement(context, onElementCreated);
     return reduceNodes(nodes);
 };
 
-export const renderPersistentAudioGraph = (createGraphElement, context = new AudioContext()) => {
+export const renderPersistentAudioGraph = (createGraphElement, context) => {
     // TODO
 };

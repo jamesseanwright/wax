@@ -1,14 +1,8 @@
-import AudioComponent from './AudioComponent';
+/* This does little right now,
+ * but might be used in the future
+ * to make optimisations and to
+ * invoke other operations. */
 
-class AudioGraph extends AudioComponent {
-    get isAudioGraph() {
-        return true;
-    }
-
-    render() {
-        return this.props.children;
-    }
-}
-
+const AudioGraph = ({ children }) => children;
 
 export default AudioGraph;
