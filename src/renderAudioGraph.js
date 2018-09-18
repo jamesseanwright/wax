@@ -1,19 +1,18 @@
-import reduceNodes from './reduceNodes';
-import createReconciliationMap from './reconciliationMap';
+import connectNodes from './connectNodes';
 
-export const renderAudioGraph = (
-    createGraphElement,
-    context = new AudioContext(),
-    reconciliationMap = createReconciliationMap(),
-) => reduceNodes(
-    createGraphElement(context, reconciliationMap),
-);
+export const renderAudioGraph = (createGraphElement, context = new AudioContext()) => {
+    const nodes = createGraphElement(context);
+    connectNodes(nodes);
+    return nodes;
+};
 
 export const renderPersistentAudioGraph = (
     createGraphElement,
     context = new AudioContext()
 ) => {
-    const map = createReconciliationMap();
-    renderAudioGraph(createGraphElement, context, map); // initial render
-    return newGraph => renderAudioGraph(newGraph, context, map);
+    let nodes = renderAudioGraph(createGraphElement, context);
+
+    return createNewGraphElement => {
+        nodes = createNewGraphElement(context, nodes);
+    };
 };

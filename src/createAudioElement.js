@@ -1,29 +1,41 @@
+const memoise = func => {
+    let result;
+
+    return (...args) => {
+        if (!result) {
+            result = func(...args);
+        }
+
+        return result;
+    };
+};
+
+const getNodeFromTree = tree =>
+    !Array.isArray(tree)
+        ? tree
+        : undefined; // faciliates with default prop in destructuring
+
 const createAudioElement = (Component, props, ...children) => {
-    const creator = (audioContext, reconciliationMap, depth = 0) => {
-        const mapResult = result =>
+    const creator = memoise((audioContext, nodeTree = []) => {
+        const mapResult = (result, i) =>
             result.isElementCreator
-                ? result(audioContext, reconciliationMap, depth + 1)
+                ? result(audioContext, nodeTree[i])
                 : result;
 
         /* we want to render children first so the nodes
          * can be directly manipulated by their parents */
         const createChildren = children => children.map(mapResult);
+        const existingNode = getNodeFromTree(nodeTree);
 
-        const existingNode = reconciliationMap.getElement(Component, depth);
-
-        return reconciliationMap.addIfNonExistent(
-            Component,
-            depth,
-            mapResult(
-                Component({
-                    children: createChildren(children),
-                    audioContext,
-                    node: existingNode,
-                    ...props,
-                })
-            )
+        return mapResult(
+            Component({
+                children: createChildren(children),
+                audioContext,
+                node: existingNode,
+                ...props,
+            })
         );
-    };
+    });
 
     /* to differentiate between element
      * creators and other function children
