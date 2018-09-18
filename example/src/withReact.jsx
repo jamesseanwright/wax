@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import {
     isWaxComponent,
     createAudioElement,
-    renderAudioGraph,
+    renderPersistentAudioGraph,
     AudioGraph,
     Oscillator,
     Gain,
@@ -27,8 +27,16 @@ class Slider extends React.Component {
         this.onChange = this.onChange.bind(this);
     }
 
+    componentDidMount() {
+        this.updateAudioGraph = renderPersistentAudioGraph(
+            this.props.children(this.props.min),
+        );
+    }
+
     onChange({ target }) {
-        renderAudioGraph(this.props.children(target.value));
+        this.updateAudioGraph(
+            this.props.children(target.value),
+        );
     }
 
     render() {

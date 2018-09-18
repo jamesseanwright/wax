@@ -1,15 +1,19 @@
-const ChannelMerger = ({ audioContext, inputs, children }) => {
-    const merger = audioContext.createChannelMerger(inputs);
+const ChannelMerger = ({
+    audioContext,
+    inputs,
+    children,
+    node = audioContext.createChannelMerger(inputs),
+}) => {
     const [setupConnections] = children;
 
-    const connectToChannel = (node, channel) => {
+    const connectToChannel = (childNode, channel) => {
         // assumption here that all nodes have 1 output. Extra param?
-        node.connect(merger, 0, channel);
+        childNode.connect(node, 0, channel);
     };
 
     setupConnections(connectToChannel);
 
-    return merger;
+    return node;
 };
 
 export default ChannelMerger;

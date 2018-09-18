@@ -24,7 +24,6 @@ const audioContext = new AudioContext();
 
 (async () => {
     const yodel = await fetchAsAudioBuffer('/yodel.mp3', audioContext);
-
     const stereoPanner = <StereoPanner pan={0.4} />;
 
     renderAudioGraph(

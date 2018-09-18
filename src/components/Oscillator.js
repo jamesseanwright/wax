@@ -8,9 +8,8 @@ const Oscillator = ({
     type,
     onended,
     enqueue,
+    node = audioContext.createOscillator(),
 }) => {
-    const node = audioContext.createOscillator();
-
     assignAudioParam(node.detune, detune, audioContext.currentTime);
     assignAudioParam(node.frequency, frequency, audioContext.currentTime);
     node.type = type;
