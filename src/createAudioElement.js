@@ -10,13 +10,22 @@ const memoise = func => {
     };
 };
 
+/* decoration is required to differentiate
+* between element creators and other function
+* children e.g. render props */
+const asMemoisedCreator = creator => {
+    const memoisedCreator = memoise(creator);
+    memoisedCreator.isElementCreator = true;
+    return memoisedCreator;
+};
+
 const getNodeFromTree = tree =>
     !Array.isArray(tree)
         ? tree
         : undefined; // faciliates with default prop in destructuring
 
-const createAudioElement = (Component, props, ...children) => {
-    const creator = memoise((audioContext, nodeTree = []) => {
+const createAudioElement = (Component, props, ...children) =>
+    asMemoisedCreator((audioContext, nodeTree = []) => {
         const mapResult = (result, i) =>
             result.isElementCreator
                 ? result(audioContext, nodeTree[i])
@@ -36,13 +45,5 @@ const createAudioElement = (Component, props, ...children) => {
             })
         );
     });
-
-    /* to differentiate between element
-     * creators and other function children
-     * e.g. render props */
-    creator.isElementCreator = true;
-
-    return creator;
-};
 
 export default createAudioElement;
