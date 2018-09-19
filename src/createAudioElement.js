@@ -1,3 +1,8 @@
+/* "memoise" is used loosely here,
+ * as we don't cache by the inner
+ * arguments. We just want to avoid
+ * recomputing the node for a certain
+ * creator func reference. */
 const memoise = func => {
     let result;
 
