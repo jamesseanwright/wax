@@ -4,5 +4,12 @@
         ["@babel/transform-react-jsx", {
             "pragma": "createAudioElement"
         }]
-    ]
+    ],
+    "env": {
+        "test": {
+            "plugins": [
+                "@babel/transform-modules-commonjs"
+            ]
+        }
+    }
 }
