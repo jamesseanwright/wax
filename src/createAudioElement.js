@@ -16,8 +16,8 @@ const memoise = func => {
 };
 
 /* decoration is required to differentiate
-* between element creators and other function
-* children e.g. render props */
+ * between element creators and other function
+ * children e.g. render props */
 const asMemoisedCreator = creator => {
     const memoisedCreator = memoise(creator);
     memoisedCreator.isElementCreator = true;
