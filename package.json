@@ -7,7 +7,7 @@
     "build": "babel src --out-dir dist",
     "build-example": "mkdir -p example/dist && rm -rf example/dist/* && rollup -c && cp -r example/src/*.{html,mp3} example/dist",
     "dev": "npm run build && npm run build-example && node example/devServer",
-    "test": "eslint --ext js --ext jsx src example/src"
+    "test": "eslint --ext js --ext jsx src example/src && jest"
   },
   "repository": {
     "type": "git",
@@ -33,9 +33,11 @@
     "@babel/plugin-proposal-object-rest-spread": "7.0.0",
     "@babel/plugin-transform-react-jsx": "7.0.0",
     "@babel/preset-react": "7.0.0",
+    "babel-jest": "23.6.0",
     "babel-plugin-transform-inline-environment-variables": "0.4.3",
     "eslint": "5.5.0",
     "eslint-plugin-react": "7.11.1",
+    "jest": "23.6.0",
     "node-static": "0.7.10",
     "react": "16.5.0",
     "react-dom": "16.5.0",

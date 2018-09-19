@@ -23,7 +23,7 @@ renderAudioGraph(
             endTime={3}
         />
         <Gain gain={0.2} />
-        <StereoPanner pan={-1} />
+        <StereoPanner pan={-0.2} />
         <Destination />
     </AudioGraph>
 );
