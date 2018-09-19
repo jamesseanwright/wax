@@ -27,7 +27,7 @@ const asMemoisedCreator = creator => {
 const getNodeFromTree = tree =>
     !Array.isArray(tree)
         ? tree
-        : undefined; // faciliates with default prop in destructuring
+        : undefined; // facilitates with default prop in destructuring
 
 const createAudioElement = (Component, props, ...children) =>
     asMemoisedCreator((audioContext, nodeTree = []) => {
