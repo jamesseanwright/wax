@@ -1,9 +1,16 @@
 export const createStubAudioContext = (currentTime = 0) => ({
     currentTime,
-    createGain(value = 0) {
+    createGain() {
         return ({
             gain: {
-                value,
+                value: 0,
+            },
+        });
+    },
+    createStereoPanner() {
+        return ({
+            pan: {
+                value: 0,
             },
         });
     }
