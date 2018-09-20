@@ -10,12 +10,9 @@ jest.mock('../../createAudioElement', () =>
 
 import createAudioElement from '../../createAudioElement';
 import asSourceNode from '../asSourceNode';
+import { createStubAudioContext } from '../../__tests__/helpers';
 
-const createStubAudioContext = currentTime => ({
-    currentTime
-});
-
-const createStubAudioNode = () => ({
+const createStubSourceNode = () => ({
     start: jest.fn(),
     stop: jest.fn(),
 });
@@ -32,7 +29,7 @@ describe('asSourceNode HOC', () => {
 
     it('should schedule playback of the source node based upon the startTime prop and context`s current time', () => {
         const audioContext = createStubAudioContext(3);
-        const audioNode = createStubAudioNode();
+        const audioNode = createStubSourceNode();
         const MyComponent = ({ enqueue, node }) => enqueue(node);
         const SourceComponent = asSourceNode(MyComponent);
 
@@ -49,7 +46,7 @@ describe('asSourceNode HOC', () => {
 
     it('should schedule the stopping of the source node when endTime is provided', () => {
         const audioContext = createStubAudioContext(3);
-        const audioNode = createStubAudioNode();
+        const audioNode = createStubSourceNode();
         const MyComponent = ({ enqueue, node }) => enqueue(node);
         const SourceComponent = asSourceNode(MyComponent);
 
@@ -68,7 +65,7 @@ describe('asSourceNode HOC', () => {
 
     it('should not schedule node playback or stopping when it has already been scheduled', () => {
         const audioContext = createStubAudioContext(3);
-        const audioNode = createStubAudioNode();
+        const audioNode = createStubSourceNode();
         const MyComponent = ({ enqueue, node }) => enqueue(node);
         const SourceComponent = asSourceNode(MyComponent);
 
