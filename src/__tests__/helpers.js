@@ -23,5 +23,15 @@ export const createStubAudioContext = (currentTime = 0) => ({
                 value: 0,
             },
         };
+    },
+    createOscillator() {
+        return {
+            detune: {
+                value: 0,
+            },
+            frequency: {
+                value: 0,
+            },
+        };
     }
 });

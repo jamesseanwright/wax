@@ -20,7 +20,7 @@ describe('Gain', () => {
 
         expect(assignAudioParam).toHaveBeenCalledTimes(1);
         expect(assignAudioParam).toHaveBeenCalledWith(node.gain, gain, audioContext.currentTime);
-        expect(node.gain.value).toEqual(0.4);
+        expect(node.gain.value).toEqual(gain);
     });
 
     it('should mutate an existing GainNode when provided', () => {
@@ -32,6 +32,6 @@ describe('Gain', () => {
         expect(result).toBe(node);
         expect(assignAudioParam).toHaveBeenCalledTimes(1);
         expect(assignAudioParam).toHaveBeenCalledWith(node.gain, gain, audioContext.currentTime);
-        expect(node.gain.value).toEqual(0.7);
+        expect(node.gain.value).toEqual(gain);
     });
 });

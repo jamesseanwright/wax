@@ -20,7 +20,7 @@ describe('StereoPanner', () => {
 
         expect(assignAudioParam).toHaveBeenCalledTimes(1);
         expect(assignAudioParam).toHaveBeenCalledWith(node.pan, pan, audioContext.currentTime);
-        expect(node.pan.value).toEqual(0.4);
+        expect(node.pan.value).toEqual(pan);
     });
 
     it('should mutate an existing StereoPannerNode when provided', () => {
@@ -32,6 +32,6 @@ describe('StereoPanner', () => {
         expect(result).toBe(node);
         expect(assignAudioParam).toHaveBeenCalledTimes(1);
         expect(assignAudioParam).toHaveBeenCalledWith(node.pan, pan, audioContext.currentTime);
-        expect(node.pan.value).toEqual(0.7);
+        expect(node.pan.value).toEqual(pan);
     });
 });

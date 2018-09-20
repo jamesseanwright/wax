@@ -1,7 +1,7 @@
 import asSourceNode from './asSourceNode';
 import assignAudioParam from '../paramMutations/assignAudioParam';
 
-const Oscillator = ({
+export const Oscillator = ({
     audioContext,
     detune = 0,
     frequency,
