@@ -35,3 +35,6 @@ export const createStubAudioContext = (currentTime = 0) => ({
         };
     }
 });
+
+export const createArrayWith = (length, creator) =>
+    Array(length).fill(null).map(creator);

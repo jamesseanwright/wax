@@ -1,8 +1,6 @@
 import { NO_OP } from '../components/NoOp';
 import connectNodes from '../connectNodes';
-
-const createArrayWith = (length, creator) =>
-    Array(length).fill(null).map(creator);
+import { createArrayWith } from './helpers';
 
 const createStubAudioNode = () => ({
     connect: jest.fn(),
@@ -52,7 +50,7 @@ describe('connectNodes', () => {
         });
     });
 
-    it('should recursively reduce multidimensional arrays of AudioNodes', () => {
+    it('should reduce multidimensional arrays of AudioNodes', () => {
         const nodes = [
             ...createArrayWith(3, createStubAudioNode),
             createArrayWith(4, createStubAudioNode),
