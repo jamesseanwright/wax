@@ -1,18 +1,16 @@
-const isSingleMutation = value => value instanceof Function;
+const isMutation = value => typeof value === 'function';
 
-const isAudioParamSequence = value =>
-    Array.isArray(value) && value.every(
-        paramMutation => typeof paramMutation === 'function'
-    );
+const isMutationSequence = value =>
+    Array.isArray(value) && value.every(isMutation);
 
 const assignAudioParam = (param, value, currentTime) => {
     if (!value) {
         return;
     }
 
-    if (isSingleMutation(value)) {
+    if (isMutation(value)) {
         value(param, currentTime);
-    } else if (isAudioParamSequence(value)) {
+    } else if (isMutationSequence(value)) {
         value.forEach(paramMutation => paramMutation(param, currentTime));
     } else {
         param.value = value;
