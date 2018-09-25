@@ -40,10 +40,10 @@ Consult the [example](https://github.com/jamesseanwright/wax/tree/master/example
 
 ## Documentation
 
-* [Introduction](https://github.com/jamesseanwright/wax/blob/docs/000-introduction.md)
-* [Getting Started](https://github.com/jamesseanwright/wax/blob/docs/001-getting-started.md)
-* [Manipulating Audio Parameters](https://github.com/jamesseanwright/wax/blob/docs/002-audio-parameters.md)
-* [Building Complex Graphs with `<Aggregation />`s](https://github.com/jamesseanwright/wax/blob/docs/003-aggregations.md)
-* [Updating Rendered `<AudioGraph />`s](https://github.com/jamesseanwright/wax/blob/docs/004-updating-audiographs.md)
-* [API Reference](https://github.com/jamesseanwright/wax/blob/docs/005-api-reference.md)
-* [Local Development](https://github.com/jamesseanwright/wax/blob/docs/006-local-development.md)
+* [Introduction](https://github.com/jamesseanwright/wax/blob/master/docs/000-introduction.md)
+* [Getting Started](https://github.com/jamesseanwright/wax/blob/master/docs/001-getting-started.md)
+* [Manipulating Audio Parameters](https://github.com/jamesseanwright/wax/blob/master/docs/002-audio-parameters.md)
+* [Building Complex Graphs with `<Aggregation />`s](https://github.com/jamesseanwright/wax/blob/master/docs/003-aggregations.md)
+* [Updating Rendered `<AudioGraph />`s](https://github.com/jamesseanwright/wax/blob/master/docs/004-updating-audiographs.md)
+* [API Reference](https://github.com/jamesseanwright/wax/blob/master/docs/005-api-reference.md)
+* [Local Development](https://github.com/jamesseanwright/wax/blob/master/docs/006-local-development.md)
