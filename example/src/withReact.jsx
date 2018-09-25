@@ -63,7 +63,6 @@ ReactDOM.render(
                     type="square"
                 />
                 <Gain gain={0.2} />
-                <StereoPanner pan={-1} />
                 <Destination />
             </AudioGraph>
         }

@@ -43,7 +43,6 @@ const audioContext = new AudioContext();
             <Aggregation>
                 <AudioBufferSource
                     buffer={yodel}
-                    startTime={2}
                 />
                 <Gain gain={1.4} />
                 {stereoPanner}
