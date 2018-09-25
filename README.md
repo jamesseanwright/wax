@@ -1,6 +1,6 @@
 # Wax
 
-A component-driven library to abstract the Web Audio API, intended to be targeted by JSX.
+An experimental, JSX-compatible renderer for the Web Audio API.
 
 ```jsx
 /** @jsx createAudioElement */
