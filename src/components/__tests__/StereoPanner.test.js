@@ -1,14 +1,13 @@
-/* TODO: replace with creator function that
- * receives jest.fn() as a parameter. */
-jest.mock('../../paramMutations/assignAudioParam');
-
-import StereoPanner from '../StereoPanner';
-import assignAudioParam from '../../paramMutations/assignAudioParam';
+import { createStereoPanner } from '../StereoPanner';
 import { createStubAudioContext } from '../../__tests__/helpers';
 
 describe('StereoPanner', () => {
+    let assignAudioParam;
+    let StereoPanner;
+
     beforeEach(() => {
-        assignAudioParam.mockImplementationOnce((param, value) => param.value = value);
+        assignAudioParam = jest.fn().mockImplementationOnce((param, value) => param.value = value);
+        StereoPanner = createStereoPanner(assignAudioParam);
     });
 
     afterEach(() => {

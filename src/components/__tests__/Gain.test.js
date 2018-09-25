@@ -1,16 +1,13 @@
-jest.mock('../../paramMutations/assignAudioParam');
-
-import Gain from '../Gain';
-import assignAudioParam from '../../paramMutations/assignAudioParam';
+import { createGain } from '../Gain';
 import { createStubAudioContext } from '../../__tests__/helpers';
 
 describe('Gain', () => {
-    beforeEach(() => {
-        assignAudioParam.mockImplementationOnce((param, value) => param.value = value);
-    });
+    let Gain;
+    let assignAudioParam;
 
-    afterEach(() => {
-        assignAudioParam.mockReset();
+    beforeEach(() => {
+        assignAudioParam = jest.fn().mockImplementation((param, value) => param.value = value);
+        Gain = createGain(assignAudioParam);
     });
 
     it('should create a GainNode, assign its gain, and return said GainNode', () => {

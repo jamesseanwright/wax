@@ -1,23 +1,26 @@
 import asSourceNode from './asSourceNode';
 import assignAudioParam from '../paramMutations/assignAudioParam';
 
-export const Oscillator = ({
-    audioContext,
-    detune = 0,
-    frequency,
-    type,
-    onended,
-    enqueue,
-    node = audioContext.createOscillator(),
-}) => {
-    assignAudioParam(node.detune, detune, audioContext.currentTime);
-    assignAudioParam(node.frequency, frequency, audioContext.currentTime);
-    node.type = type;
-    node.onended = onended;
+export const createOscillator = assignParam =>
+    ({
+        audioContext,
+        detune = 0,
+        frequency,
+        type,
+        onended,
+        enqueue,
+        node = audioContext.createOscillator(),
+    }) => {
+        assignParam(node.detune, detune, audioContext.currentTime);
+        assignParam(node.frequency, frequency, audioContext.currentTime);
+        node.type = type;
+        node.onended = onended;
 
-    enqueue(node);
+        enqueue(node);
 
-    return node;
-};
+        return node;
+    };
 
-export default asSourceNode(Oscillator);
+export default asSourceNode(
+    createOscillator(assignAudioParam)
+);

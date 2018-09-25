@@ -1,16 +1,14 @@
-jest.mock('../../paramMutations/assignAudioParam');
 
-import { AudioBufferSource } from '../AudioBufferSource';
-import assignAudioParam from '../../paramMutations/assignAudioParam';
+import { createAudioBufferSource } from '../AudioBufferSource';
 import { createStubAudioContext } from '../../__tests__/helpers';
 
 describe('AudioBufferSource', () => {
-    beforeEach(() => {
-        assignAudioParam.mockImplementationOnce((param, value) => param.value = value);
-    });
+    let AudioBufferSource;
+    let assignAudioParam;
 
-    afterEach(() => {
-        assignAudioParam.mockReset();
+    beforeEach(() => {
+        assignAudioParam = jest.fn().mockImplementationOnce((param, value) => param.value = value);
+        AudioBufferSource = createAudioBufferSource(assignAudioParam);
     });
 
     it('should create an AudioBufferSourceNode, assign its props, enqueue, and return said GainNode', () => {

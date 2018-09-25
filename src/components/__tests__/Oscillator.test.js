@@ -1,16 +1,13 @@
-jest.mock('../../paramMutations/assignAudioParam');
-
-import { Oscillator } from '../Oscillator';
-import assignAudioParam from '../../paramMutations/assignAudioParam';
+import { createOscillator } from '../Oscillator';
 import { createStubAudioContext } from '../../__tests__/helpers';
 
-describe('StereoPanner', () => {
-    beforeEach(() => {
-        assignAudioParam.mockImplementation((param, value) => param.value = value);
-    });
+describe('Oscillator', () => {
+    let assignAudioParam;
+    let Oscillator;
 
-    afterEach(() => {
-        assignAudioParam.mockReset();
+    beforeEach(() => {
+        assignAudioParam = jest.fn().mockImplementation((param, value) => param.value = value);
+        Oscillator = createOscillator(assignAudioParam);
     });
 
     it('should create an OscillatorNode, assign its props, and return said OscillatorNode', () => {

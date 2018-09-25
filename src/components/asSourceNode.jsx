@@ -5,7 +5,7 @@
 
 /** @jsx createAudioElement */
 
-import createAudioElement from '../createAudioElement';
+import elementCreator from '../createAudioElement';
 
 const createEnqueuer = ({ audioContext, startTime = 0, endTime }) =>
     node => {
@@ -22,10 +22,14 @@ const createEnqueuer = ({ audioContext, startTime = 0, endTime }) =>
         node.isScheduled = true;
     };
 
-const asSourceNode = Component => props =>
-    <Component
-        enqueue={createEnqueuer(props)}
-        {...props}
-    />;
+/* thunk to create HOC with cAE
+ * as injectable dependency */
+export const createAsSourceNode = createAudioElement =>
+    Component =>
+        props =>
+            <Component
+                enqueue={createEnqueuer(props)}
+                {...props}
+            />;
 
-export default asSourceNode;
+export default createAsSourceNode(elementCreator);

@@ -1,15 +1,6 @@
 /** @jsx createAudioElement */
 
-jest.mock('../../createAudioElement', () =>
-    (Component, props, ...children) =>
-        Component({
-            children,
-            ...props,
-        })
-);
-
-import createAudioElement from '../../createAudioElement';
-import asSourceNode from '../asSourceNode';
+import { createAsSourceNode } from '../asSourceNode';
 import { createStubAudioContext } from '../../__tests__/helpers';
 
 const createStubSourceNode = () => ({
@@ -18,6 +9,21 @@ const createStubSourceNode = () => ({
 });
 
 describe('asSourceNode HOC', () => {
+    // used by both asSourceNode and JSX below
+    const createAudioElement = jest.fn().mockImplementation(
+        (Component, props, ...children) =>
+            Component({
+                children,
+                ...props,
+            })
+    );
+
+    let asSourceNode;
+
+    beforeEach(() => {
+        asSourceNode = createAsSourceNode(createAudioElement);
+    });
+
     it('should create a new component that proxies incoming props and provides an enqueue prop', () => {
         const MyComponent = props => ({ props }); // TODO: common, reusable pattern across tests?
         const SourceComponent = asSourceNode(MyComponent);
