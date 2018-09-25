@@ -10,7 +10,6 @@ import {
     AudioGraph,
     Oscillator,
     Gain,
-    StereoPanner,
     Destination,
 } from 'wax-core';
 

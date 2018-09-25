@@ -13,7 +13,10 @@ const path = require('path');
 const url = require('url');
 const nodeStatic = require('node-static');
 
-const file = new nodeStatic.Server(path.join(__dirname, 'dist'));
+const file = new nodeStatic.Server(
+    path.join(__dirname, 'dist'),
+    { cache: 0 },
+);
 
 const contentTypes = new Map([
     [/.*\.mp3/ig, 'audio/mp3'],
