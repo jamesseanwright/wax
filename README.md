@@ -1,6 +1,6 @@
 # Wax
 
-An experimental, JSX-compatible renderer for the Web Audio API.
+An experimental, JSX-compatible renderer for the Web Audio API. I wrote Wax for my [Manchester Web Meetup](https://www.meetup.com/Manchester-Web-Meetup) talk, _Manipulating the Web Audio API with JSX and custom renderers_ (video coming soon).
 
 ```jsx
 /** @jsx createAudioElement */
@@ -36,10 +36,11 @@ renderAudioGraph(
 
 ## Example Apps
 
-Consult the [example](https://github.com/jamesseanwright/wax/tree/master/example) directory for a few small example apps that use Wax. The included [`README`](https://github.com/jamesseanwright/wax/blob/master/example/README.md) will summarise them and detail how they can be built and ran.
+Consult the [example](https://github.com/jamesseanwright/wax/tree/master/example) directory for a few small example apps that use Wax. The included [`README`](https://github.com/jamesseanwright/wax/blob/master/example/README.md) summarises them and details how they can be built and ran.
 
 ## Documentation
 
+* [Introduction](https://github.com/jamesseanwright/wax/blob/docs/000-introduction.md)
 * [Getting Started](https://github.com/jamesseanwright/wax/blob/docs/001-getting-started.md)
 * [Manipulating Audio Parameters](https://github.com/jamesseanwright/wax/blob/docs/002-audio-parameters.md)
 * [Building Complex Graphs with `<Aggregation />`s](https://github.com/jamesseanwright/wax/blob/docs/003-aggregations.md)
