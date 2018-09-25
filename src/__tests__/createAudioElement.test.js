@@ -1,6 +1,31 @@
 import { createArrayWith } from './helpers';
 import createAudioElement from '../createAudioElement';
 
+const createElementCreator = node => {
+    const creator = jest.fn().mockReturnValue(node);
+    creator.isElementCreator = true;
+    return creator;
+};
+
+const createAudioGraph = nodeTree =>
+    nodeTree.map(node =>
+        Array.isArray(node)
+            ? createElementCreator(createAudioGraph(node))
+            : createElementCreator(node)
+    );
+
+
+const assertNestedAudioGraph = (graph, nodeTree, audioContext) => {
+    graph.forEach((creator, i) => {
+        if (Array.isArray(creator)) {
+            assertNestedAudioGraph(creator, nodeTree[i], audioContext);
+        } else {
+            expect(creator).toHaveBeenCalledTimes(1);
+            expect(creator).toHaveBeenCalledWith(audioContext, nodeTree[i]);
+        }
+    });
+};
+
 describe('createAudioElement', () => {
     it('should conform to the JSX pragma signature and return a creator function', () => {
         const node = {};
@@ -22,10 +47,7 @@ describe('createAudioElement', () => {
 
     it('should render a creator when it is returned from a component', () => {
         const innerNode = {};
-        const innerCreator = jest.fn().mockReturnValue(innerNode);
-
-        innerCreator.isElementCreator = true;
-
+        const innerCreator = createElementCreator(innerNode);
         const audioContext = {};
         const Component = jest.fn().mockReturnValue(innerCreator);
         const creator = createAudioElement(Component, {});
@@ -39,9 +61,7 @@ describe('createAudioElement', () => {
     it('should invoke child creators when setting the parent`s `children` prop', () => {
         const children = createArrayWith(10, (_, id) => {
             const node = { id };
-            const creator = jest.fn().mockReturnValue(node);
-            creator.isElementCreator = true;
-
+            const creator = createElementCreator(node);
             return { node, creator };
         });
 
@@ -60,5 +80,50 @@ describe('createAudioElement', () => {
             audioContext,
             children: children.map(({ node }) => node),
         });
+    });
+
+    it('should reconcile existing nodes for the graph from the provided array', () => {
+        const nodeTree = [
+            { id: 0 },
+            { id: 1 },
+            [
+                { id: 2 },
+                { id: 3 },
+                [
+                    { id: 4 },
+                    { id: 5 },
+                ],
+                { id: 6 },
+            ],
+            { id: 7 },
+            { id: 8 },
+        ];
+
+        const audioContext = { isAudioContext: true };
+        const graph = createAudioGraph(nodeTree);
+        const Component = jest.fn().mockReturnValue(nodeTree);
+
+        const audioGraphCreator = createAudioElement(
+            Component,
+            {},
+            ...graph,
+        );
+
+        audioGraphCreator(audioContext, nodeTree);
+        assertNestedAudioGraph(graph, nodeTree, audioContext);
+    });
+
+    it('should cache creator results', () => {
+        const Component = jest.fn().mockReturnValue({});
+
+        const creator = createAudioElement(
+            Component,
+            {},
+        );
+
+        creator({});
+        creator({});
+
+        expect(Component).toHaveBeenCalledTimes(1);
     });
 });

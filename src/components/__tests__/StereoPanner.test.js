@@ -1,3 +1,5 @@
+/* TODO: replace with creator function that
+ * receives jest.fn() as a parameter. */
 jest.mock('../../paramMutations/assignAudioParam');
 
 import StereoPanner from '../StereoPanner';

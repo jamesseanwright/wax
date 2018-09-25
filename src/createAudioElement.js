@@ -1,9 +1,9 @@
-/* "memoise" is used loosely here,
+/* I chose "cache" over "memoise" here,
  * as we don't cache by the inner
  * arguments. We just want to avoid
  * recomputing the node for a certain
  * creator func reference. */
-const memoise = func => {
+const cache = func => {
     let result;
 
     return (...args) => {
@@ -18,8 +18,8 @@ const memoise = func => {
 /* decoration is required to differentiate
  * between element creators and other function
  * children e.g. render props */
-const asMemoisedCreator = creator => {
-    const memoisedCreator = memoise(creator);
+const asCachedCreator = creator => {
+    const memoisedCreator = cache(creator);
     memoisedCreator.isElementCreator = true;
     return memoisedCreator;
 };
@@ -30,7 +30,7 @@ const getNodeFromTree = tree =>
         : undefined; // facilitates with default prop in destructuring
 
 const createAudioElement = (Component, props, ...children) =>
-    asMemoisedCreator((audioContext, nodeTree = []) => {
+    asCachedCreator((audioContext, nodeTree = []) => {
         const mapResult = (result, i) =>
             result.isElementCreator
                 ? result(audioContext, nodeTree[i])
