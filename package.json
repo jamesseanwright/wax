@@ -1,6 +1,6 @@
 {
   "name": "wax-core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An experimental, JSX-compatible renderer for the Web Audio API",
   "main": "dist/index.js",
   "scripts": {
