@@ -1,6 +1,6 @@
 {
   "name": "wax-core",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "An experimental, JSX-compatible renderer for the Web Audio API",
   "main": "dist/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jamesseanwright/web-audio-x.git"
+    "url": "git+https://github.com/jamesseanwright/wax.git"
   },
   "keywords": [
     "web",
@@ -24,9 +24,9 @@
   "author": "James Wright <james@jamesswright.co.uk>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jamesseanwright/web-audio-x/issues"
+    "url": "https://github.com/jamesseanwright/wax/issues"
   },
-  "homepage": "https://github.com/jamesseanwright/web-audio-x#readme",
+  "homepage": "https://github.com/jamesseanwright/wax#readme",
   "devDependencies": {
     "@babel/cli": "7.0.0",
     "@babel/core": "7.0.0",
