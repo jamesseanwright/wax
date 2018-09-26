@@ -1,6 +1,6 @@
 # Building Complex Graphs with `<Aggregation />`s
 
-Thus far, we have built a simple, linear audio graph. What if we want to build more complex graphs in which multiple sources connect to common nodes? In Wax, we can achieve this with the `<Aggregation />` component.
+Thus far, we have built a simple, linear audio graph. What if we want to build more complex graphs in which multiple sources connect to common nodes? In Wax, we can achieve this with the `<Aggregation />` component, which like everything else is exported as a binding from the main package.
 
 Say we wish to build the following graph:
 
@@ -40,7 +40,6 @@ renderAudioGraph(
             <AudioBufferSource
                 buffer={yodel}
             />
-            <Gain gain={1.4} />
             {stereoPanner}
         </Aggregation>
         {stereoPanner}
@@ -54,4 +53,4 @@ You can think of an aggregation as a nestable audio graph; it will connect its c
 
 Typically, you'll declare a shared element in a single place, to which the other children of an aggregation can connect; said shared element can then be specified again in the main audio graph to ensure it is ultimately connected, directly or indirectly, to the destination node.
 
-Let's clarify this within the above example. We declare a single `<StereoPanner />` element, which will create a single `StereoPannerNode` to which two `GainNodes` will connect. Outside of the two `<Aggregation />` elements, we specify the same element instance again in the root audio graph, so that it will be connected to `audioContext.destination`. As we can reuse existing elements by declaration name within a set of curly braces in React, we can achieve the same in Wax; to summarise, these sharable elements can be used within inner aggregations and the root audio graph to generate more complex sounds.
+Let's clarify this within the above example. We declare a single `<StereoPanner />` element, which will create a single `StereoPannerNode` to which a `GainNode` and an `AudioBufferSourceNode` will respectively connect. Outside of the two `<Aggregation />` elements, we specify the same element instance again in the root audio graph, so that it will be connected to `audioContext.destination`. As we can reuse existing elements by declaration name within a set of curly braces in React, we can achieve the same in Wax; to summarise, these sharable elements can be used within inner aggregations and the root audio graph to generate more complex sounds.
