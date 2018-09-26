@@ -48,6 +48,5 @@ Consult the [example](https://github.com/jamesseanwright/wax/tree/master/example
 * [Building Complex Graphs with `<Aggregation />`s](https://github.com/jamesseanwright/wax/blob/master/docs/003-aggregations.md)
 * [Updating Rendered `<AudioGraph />`s](https://github.com/jamesseanwright/wax/blob/master/docs/004-updating-audiographs.md)
 * [Interop with React](https://github.com/jamesseanwright/wax/blob/master/docs/005-interop-with-react.md)
-* [Creating Custom Components](https://github.com/jamesseanwright/wax/blob/master/docs/006-creating-custom-components.md)
-* [API Reference](https://github.com/jamesseanwright/wax/blob/master/docs/007-api-reference.md)
-* [Local Development](https://github.com/jamesseanwright/wax/blob/master/docs/008-local-development.md)
+* [API Reference](https://github.com/jamesseanwright/wax/blob/master/docs/006-api-reference.md)
+* [Local Development](https://github.com/jamesseanwright/wax/blob/master/docs/007-local-development.md)
