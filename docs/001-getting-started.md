@@ -95,3 +95,17 @@ Once we have our bundle, we can load it into a HTML document using a `<script>` 
 ```html
 <script src="/index.js"></script>
 ```
+
+## `createAudioElement` and ESLint
+
+If you are using ESLint to analyse your code, you may receive this error:
+
+```
+'createAudioElement' is defined but never used.
+```
+
+This is because eslint-plugin-react expects the pragma to be `React.createElement`. To suppress this error, you can specify an `@jsx` directive at the beginning of your module
+
+```js
+/** @jsx createAudioElement */
+```
