@@ -104,7 +104,19 @@ If you are using ESLint to analyse your code, you may receive this error:
 'createAudioElement' is defined but never used.
 ```
 
-This is because eslint-plugin-react expects the pragma to be `React.createElement`. To suppress this error, you can specify an `@jsx` directive at the beginning of your module
+This is because `eslint-plugin-react` expects the pragma to be `React.createElement`. To suppress this error, one should explicitly configure the React plugin in the ESLint config's `settings` property:
+
+```json
+{
+    "settings": {
+        "react": {
+            "pragma": "createAudioElement"
+        }
+    }
+}
+```
+
+Alternatively, one can specify an `@jsx` directive at the beginning of your module
 
 ```js
 /** @jsx createAudioElement */

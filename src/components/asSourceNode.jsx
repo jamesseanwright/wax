@@ -3,8 +3,6 @@
  * for enqueuing the starting and
  * stopping of source nodes */
 
-/** @jsx createAudioElement */
-
 import elementCreator from '../createAudioElement';
 
 const createEnqueuer = ({ audioContext, startTime = 0, endTime }) =>

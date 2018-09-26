@@ -1,5 +1,3 @@
-/** @jsx createAudioElement */
-
 import createAudioElement from '../createAudioElement';
 import NoOp from './NoOp';
 import AudioGraph from './AudioGraph';

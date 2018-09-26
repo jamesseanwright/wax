@@ -16,6 +16,11 @@ module.exports = {
     "plugins": [
         "react"
     ],
+    "settings": {
+        "react": {
+            "pragma": "createAudioElement"
+        }
+    },
     "rules": {
         "indent": [
             "error",

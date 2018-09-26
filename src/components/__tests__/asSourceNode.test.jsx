@@ -1,5 +1,3 @@
-/** @jsx createAudioElement */
-
 import { createAsSourceNode } from '../asSourceNode';
 import { createStubAudioContext } from '../../__tests__/helpers';
 

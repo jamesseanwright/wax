@@ -1,5 +1,3 @@
-/** @jsx createAudioElement */
-
 import {
     createAudioElement,
     renderAudioGraph,
