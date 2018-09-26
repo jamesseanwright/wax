@@ -10,6 +10,6 @@ The `src` directory contains three example Wax applications, each bootstrapped b
 
 ## Running the Examples
 
-After following the setup guide in the [local development documentation](https://github.com/jamesseanwright/wax/blob/master/docs/006-local-development.md), run `npm run dev` from the root of the repository. You can specify the `ENTRY` environment varible to select which app to run; this is the name of the app **without** the `.jsx` extension e.g. `ENTRY=withReact npm run dev`. If omitted, `simple` will be built and started.
+After following the setup guide in the [local development documentation](https://github.com/jamesseanwright/wax/blob/master/docs/008-local-development.md), run `npm run dev` from the root of the repository. You can specify the `ENTRY` environment varible to select which app to run; this is the name of the app **without** the `.jsx` extension e.g. `ENTRY=withReact npm run dev`. If omitted, `simple` will be built and started.
 
 The example apps are [built using rollup](https://github.com/jamesseanwright/wax/blob/master/rollup.config.js).
