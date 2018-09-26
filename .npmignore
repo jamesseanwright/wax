@@ -6,3 +6,4 @@ example
 .nvmrc
 README.md
 rollup.config.js
+.travis.yml
