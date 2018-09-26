@@ -1,6 +1,6 @@
 # Building Complex Graphs with `<Aggregation />`s
 
-Thus far, we have built a simple, linear audio graph. What if we want to build more complex graphs in which multiple sources connect to common nodes? In Wax, we can achieve this with the `<Aggregation />` component, which like everything else is exported as a binding from the main package.
+Thus far, we have built a simple, linear audio graph. What if we want to build more complex graphs in which multiple sources connect to common nodes? In Wax, we can achieve this with the `<Aggregation />` component.
 
 Say we wish to build the following graph:
 
@@ -19,6 +19,13 @@ stereoPanner.connect(context.destination);
 Great! But how can we achieve this with Wax? With the `<Aggregation />` component, that's how:
 
 ```js
+import {
+    Aggregation,
+    ...
+} from 'wax-core';
+
+// [...]
+
 const yodel = await fetchAsAudioBuffer('/yodel.mp3', audioContext);
 const stereoPanner = <StereoPanner pan={0.4} />;
 
