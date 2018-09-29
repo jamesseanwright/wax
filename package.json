@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "babel src --out-dir dist",
-    "build-example": "mkdir -p example/dist && rm -rf example/dist/* && rollup -c && cp -r example/src/*.{html,mp3} example/dist",
+    "build-example": "mkdir -p example/dist && rm -rf example/dist/* && rollup -c && bash -c 'cp -r example/src/*.{html,mp3} example/dist'",
     "dev": "npm run build && npm run build-example && node example/devServer",
     "test": "eslint --ext js --ext jsx src example/src && jest",
     "test:ci": "npm test -- --coverage --coverageReporters=text-lcov | coveralls"
