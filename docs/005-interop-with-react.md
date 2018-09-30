@@ -1,6 +1,6 @@
 # Interop with React
 
-In the prior chapter, we learned how to update an existing audio graph whenever a `HTMLInputElement` fires a `change` event. Can we handle the visual UI with React while supporting JSX-defclared audio graphs with React?
+In the prior chapter, we learned how to update an existing audio graph whenever a `HTMLInputElement` fires a `change` event. Can we handle the visual UI with React while supporting JSX-declared audio graphs with React?
 
 The problem is that we need to be able to use `React.createElement` and `createAudioElement` at the same time. What if we could create a single pragma that can select whether to use the former or the latter at runtime? The [`withReact` example app](https://github.com/jamesseanwright/wax/blob/master/example/src/withReact.jsx) has a solution:
 
