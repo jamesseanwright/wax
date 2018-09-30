@@ -48,7 +48,7 @@ Consult the [example](https://github.com/jamesseanwright/wax/tree/master/example
 * [Getting Started](https://github.com/jamesseanwright/wax/blob/master/docs/001-getting-started.md)
 * [Manipulating Audio Parameters](https://github.com/jamesseanwright/wax/blob/master/docs/002-audio-parameters.md)
 * [Building Complex Graphs with `<Aggregation />`s](https://github.com/jamesseanwright/wax/blob/master/docs/003-aggregations.md)
-* [Updating Rendered `<AudioGraph />`s](https://github.com/jamesseanwright/wax/blob/master/docs/004-updating-audiographs.md)
+* [Updating Rendered `<AudioGraph />`s](https://github.com/jamesseanwright/wax/blob/master/docs/004-updating-audio-graphs.md)
 * [Interop with React](https://github.com/jamesseanwright/wax/blob/master/docs/005-interop-with-react.md)
 * [API Reference](https://github.com/jamesseanwright/wax/blob/master/docs/006-api-reference.md)
 * [Local Development](https://github.com/jamesseanwright/wax/blob/master/docs/007-local-development.md)
