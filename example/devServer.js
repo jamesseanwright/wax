@@ -19,7 +19,7 @@ const file = new nodeStatic.Server(
 );
 
 const contentTypes = new Map([
-    [/.*\.mp3/ig, 'audio/mp3'],
+    [/.*\.mp3$/ig, 'audio/mp3'],
 ]);
 
 const getContentType = req => {
