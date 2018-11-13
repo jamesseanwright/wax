@@ -1,4 +1,4 @@
-# Updating Rendered `<AudioGraph />`s
+# Updating Rendered `<AudioGraph />`s
 
 Thus far, we have been rendering static audio graphs with the `renderAudioGraph` function. Say we now want to update a graph that creates an oscillator, whose frequency is dictated by a slider (`<input type="range" />`):
 
