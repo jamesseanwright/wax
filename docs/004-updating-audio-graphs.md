@@ -52,7 +52,7 @@ By invoking the `updateAudioGraph` function returned by calling `renderPersisten
 
 ## A Note on "Reconciliation"
 
-At present, Wax will not diff element trees between renders to determine if nodes have been added or removed; it assumes that their structures are identical, and that only respective properties have changed. This is certaintly a big limitation and will be addressed properly if this project evolves from an experiment; for the time being, conditionally specifying elements will not work:
+At present, Wax will not diff element trees between renders to determine if nodes have been added or removed; it assumes that their structures are identical, and that only respective properties have changed. This is certaintly a big limitation and will be addressed properly if this project evolves from its experimental stage; for the time being, conditionally specifying elements will not work:
 
 ```js
 <AudioGraph>
