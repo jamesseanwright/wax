@@ -2,7 +2,7 @@
 
 [![Travis CI status](https://api.travis-ci.org/jamesseanwright/wax.svg?branch=master)](https://travis-ci.org/jamesseanwright/wax) [![Code coverage status](https://coveralls.io/repos/github/jamesseanwright/wax/badge.svg?branch=master)](https://coveralls.io/github/jamesseanwright/wax?branch=master) [![npm version](https://badge.fury.io/js/wax-core.svg)](https://www.npmjs.com/package/wax-core)
 
-An experimental, JSX-compatible renderer for the Web Audio API. I wrote Wax for my [Manchester Web Meetup](https://www.meetup.com/Manchester-Web-Meetup) talk, _Manipulating the Web Audio API with JSX and custom renderers_ (video coming soon).
+An experimental, JSX-compatible renderer for the Web Audio API. I wrote Wax for my [Manchester Web Meetup](https://www.meetup.com/Manchester-Web-Meetup) talk, [_Manipulating the Web Audio API with JSX and custom renderers_](https://www.youtube.com/watch?v=IeuuBKBb4Wg).
 
 While it has decent test coverage and is stable, I still deem this to be a work-in-progress. **Use in production at your own risk!**
 
