@@ -1,22 +1,41 @@
 const createNodeTree = () => {
-    const nodes = [];
+    const entries = [];
 
     return {
-        append(node) {
-            nodes.push(node);
-            return node;
+        get isTree() {
+            return true;
         },
 
-        getNodeAtIndex(node, index) {
-            const existingNode = nodes[index];
-
-            return existingNode && existingNode.constructor === node.constructor
-                ? existingNode
-                : undefined;
+        get entries() {
+            return entries;
         },
 
-        get(index) {
-            return nodes[index];
+        append(Component, node) {
+            const entry = { Component, node };
+            entries.push(entry);
+            return entry; // TODO: remove return?
+        },
+
+        branch(index) {
+            const entry = entries[index];
+
+            if (entry && entry.isTree) {
+                return entry;
+            }
+
+            const subTree = createNodeTree();
+
+            entries.push(subTree);
+
+            return subTree;
+        },
+
+        getNodeOfTypeAtIndex(Component, index) {
+            const entry = entries[index];
+
+            return entry && entry.Component === Component && entry.node
+                ? entry.node
+                : undefined; // For property destructuring/defaults
         },
     };
 };

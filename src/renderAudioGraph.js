@@ -1,18 +1,18 @@
-import connectNodes from './connectNodes';
+import connectTree from './connectTree';
 
 export const renderAudioGraph = (createGraphElement, context = new AudioContext()) => {
-    const nodes = createGraphElement(context);
-    connectNodes(nodes);
-    return nodes;
+    const nodeTree = createGraphElement(context);
+    connectTree(nodeTree);
+    return nodeTree;
 };
 
 export const renderPersistentAudioGraph = (
     createGraphElement,
-    context = new AudioContext()
+    context = new AudioContext(),
 ) => {
-    let nodes = renderAudioGraph(createGraphElement, context);
+    let nodeTree = renderAudioGraph(createGraphElement, context);
 
     return createNewGraphElement => {
-        nodes = createNewGraphElement(context, nodes);
+        nodeTree = createNewGraphElement(context, nodeTree);
     };
 };

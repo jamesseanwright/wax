@@ -1,3 +1,5 @@
+import createNodeTree from './createNodeTree';
+
 /* I chose "cache" over "memoise" here,
  * as we don't cache by the inner
  * arguments. We just want to avoid
@@ -24,33 +26,31 @@ const asCachedCreator = creator => {
     return memoisedCreator;
 };
 
-const getNodeFromTree = tree =>
-    !Array.isArray(tree)
-        ? tree
-        : undefined; // facilitates with default prop in destructuring
-
 const createAudioElement = (Component, props, ...children) =>
     asCachedCreator((audioContext, nodeTree = createNodeTree(), i = 0) => {
         const mapResult = (result, i) =>
             result.isElementCreator
-                ? result(audioContext, nodeTree, i)
+                ? result(audioContext, nodeTree.branch(i), i)
                 : result;
 
         /* we want to render children first so the nodes
          * can be directly manipulated by their parents */
         const createChildren = children => children.map(mapResult);
-        const existingNode = nodeTree.getNodeAtIndex(Component, i);
+        const existingNode = nodeTree.getNodeOfTypeAtIndex(Component, i);
 
-        return nodeTree.append( // TODO: capture component type in here somehow
+        nodeTree.append( // TODO: make append call Component internally?!
+            Component,
             mapResult(
                 Component({
                     children: createChildren(children),
                     audioContext,
                     node: existingNode,
                     ...props,
-                })
+                }),
             ),
         );
+
+        return nodeTree;
     });
 
 export default createAudioElement;
