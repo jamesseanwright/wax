@@ -10,8 +10,8 @@ const createNodeTree = () => {
             return entries;
         },
 
-        append(Component, node) {
-            const entry = { Component, node };
+        append(Component, audioNode) {
+            const entry = { Component, audioNode };
             entries.push(entry);
             return entry; // TODO: remove return?
         },
@@ -33,8 +33,8 @@ const createNodeTree = () => {
         getNodeOfTypeAtIndex(Component, index) {
             const entry = entries[index];
 
-            return entry && entry.Component === Component && entry.node
-                ? entry.node
+            return entry && entry.Component === Component && entry.audioNode
+                ? entry.audioNode
                 : undefined; // For property destructuring/defaults
         },
     };
