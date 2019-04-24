@@ -19,9 +19,9 @@ const cache = func => {
  * between element creators and other function
  * children e.g. render props */
 const asCachedCreator = creator => {
-    const memoisedCreator = cache(creator);
-    memoisedCreator.isElementCreator = true;
-    return memoisedCreator;
+    const cachedCreator = cache(creator);
+    cachedCreator.isElementCreator = true;
+    return cachedCreator;
 };
 
 const getNodeFromTree = tree =>

@@ -1,6 +1,9 @@
 import connectNodes from './connectNodes';
 
-export const renderAudioGraph = (createGraphElement, context = new AudioContext()) => {
+export const renderAudioGraph = (
+    createGraphElement,
+    context = new AudioContext(),
+) => {
     const nodes = createGraphElement(context);
     connectNodes(nodes);
     return nodes;
@@ -8,7 +11,7 @@ export const renderAudioGraph = (createGraphElement, context = new AudioContext(
 
 export const renderPersistentAudioGraph = (
     createGraphElement,
-    context = new AudioContext()
+    context = new AudioContext(),
 ) => {
     let nodes = renderAudioGraph(createGraphElement, context);
 
