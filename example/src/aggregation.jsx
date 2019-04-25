@@ -24,30 +24,34 @@ const audioContext = new AudioContext();
     const yodel = await fetchAsAudioBuffer('/yodel.mp3', audioContext);
     const stereoPanner = <StereoPanner pan={0.4} />;
 
-    renderAudioGraph(
-        <AudioGraph>
-            <Aggregation>
-                <Oscillator
-                    frequency={[
-                        setValueAtTime(200, 0),
-                        exponentialRampToValueAtTime(800, 3),
-                    ]}
-                    type="square"
-                    endTime={3}
-                />
-                <Gain gain={0.1} />
+    document.onclick = () => {
+        audioContext.resume();
+
+        renderAudioGraph(
+            <AudioGraph>
+                <Aggregation>
+                    <Oscillator
+                        frequency={[
+                            setValueAtTime(200, 0),
+                            exponentialRampToValueAtTime(800, 3),
+                        ]}
+                        type="square"
+                        endTime={3}
+                    />
+                    <Gain gain={0.1} />
+                    {stereoPanner}
+                </Aggregation>
+                <Aggregation>
+                    <AudioBufferSource
+                        buffer={yodel}
+                    />
+                    <Gain gain={1.4} />
+                    {stereoPanner}
+                </Aggregation>
                 {stereoPanner}
-            </Aggregation>
-            <Aggregation>
-                <AudioBufferSource
-                    buffer={yodel}
-                />
-                <Gain gain={1.4} />
-                {stereoPanner}
-            </Aggregation>
-            {stereoPanner}
-            <Destination />
-        </AudioGraph>,
-        audioContext,
-    );
+                <Destination />
+            </AudioGraph>,
+            audioContext,
+        );
+    };
 })();

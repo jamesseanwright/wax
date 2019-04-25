@@ -24,11 +24,15 @@ class Slider extends React.Component {
     constructor(props) {
         super(props);
         this.onChange = this.onChange.bind(this);
+        this.audioContext = new AudioContext();
     }
 
     componentDidMount() {
+        this.audioContext.resume();
+
         this.updateAudioGraph = renderPersistentAudioGraph(
             this.props.children(this.props.min),
+            this.audioContext,
         );
     }
 
