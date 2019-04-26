@@ -21,8 +21,8 @@
                     resumptionCallback = callback;
                 };
 
-                button.onclick = () => {
-                    audioContext.resume();
+                button.onclick = async () => {
+                    await audioContext.resume();
                     resumptionCallback(audioContext);
                 };
             </script>
