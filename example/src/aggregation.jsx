@@ -18,40 +18,34 @@ const fetchAsAudioBuffer = async (url, audioContext) => {
     return await audioContext.decodeAudioData(arrayBuffer);
 };
 
-const audioContext = new AudioContext();
-
-(async () => {
-    const yodel = await fetchAsAudioBuffer('/yodel.mp3', audioContext);
+onAudioContextResumed(async context => {
+    const yodel = await fetchAsAudioBuffer('/yodel.mp3', context);
     const stereoPanner = <StereoPanner pan={0.4} />;
 
-    document.onclick = () => {
-        audioContext.resume();
-
-        renderAudioGraph(
-            <AudioGraph>
-                <Aggregation>
-                    <Oscillator
-                        frequency={[
-                            setValueAtTime(200, 0),
-                            exponentialRampToValueAtTime(800, 3),
-                        ]}
-                        type="square"
-                        endTime={3}
-                    />
-                    <Gain gain={0.1} />
-                    {stereoPanner}
-                </Aggregation>
-                <Aggregation>
-                    <AudioBufferSource
-                        buffer={yodel}
-                    />
-                    <Gain gain={1.4} />
-                    {stereoPanner}
-                </Aggregation>
+    renderAudioGraph(
+        <AudioGraph>
+            <Aggregation>
+                <Oscillator
+                    frequency={[
+                        setValueAtTime(200, 0),
+                        exponentialRampToValueAtTime(800, 3),
+                    ]}
+                    type="square"
+                    endTime={3}
+                />
+                <Gain gain={0.1} />
                 {stereoPanner}
-                <Destination />
-            </AudioGraph>,
-            audioContext,
-        );
-    };
-})();
+            </Aggregation>
+            <Aggregation>
+                <AudioBufferSource
+                    buffer={yodel}
+                />
+                <Gain gain={1.4} />
+                {stereoPanner}
+            </Aggregation>
+            {stereoPanner}
+            <Destination />
+        </AudioGraph>,
+        context,
+    );
+});

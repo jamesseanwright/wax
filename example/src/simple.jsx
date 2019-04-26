@@ -10,11 +10,7 @@ import {
     exponentialRampToValueAtTime,
 } from 'wax-core';
 
-const context = new AudioContext();
-
-document.onclick = () => {
-    context.resume();
-
+onAudioContextResumed(context => {
     renderAudioGraph(
         <AudioGraph>
             <Oscillator
@@ -31,4 +27,4 @@ document.onclick = () => {
         </AudioGraph>,
         context,
     );
-};
+});

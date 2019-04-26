@@ -24,15 +24,14 @@ class Slider extends React.Component {
     constructor(props) {
         super(props);
         this.onChange = this.onChange.bind(this);
-        this.audioContext = new AudioContext();
     }
 
     componentDidMount() {
-        this.audioContext.resume();
+        const { children, min, audioContext } = this.props;
 
         this.updateAudioGraph = renderPersistentAudioGraph(
-            this.props.children(this.props.min),
-            this.audioContext,
+            children(min),
+            audioContext,
         );
     }
 
@@ -54,21 +53,24 @@ class Slider extends React.Component {
     }
 }
 
-ReactDOM.render(
-    <Slider
-        min={40}
-        max={800}
-    >
-        {value =>
-            <AudioGraph>
-                <Oscillator
-                    frequency={value}
-                    type="square"
-                />
-                <Gain gain={0.2} />
-                <Destination />
-            </AudioGraph>
-        }
-    </Slider>,
-    document.querySelector('#react-target'),
-);
+onAudioContextResumed(context => {
+    ReactDOM.render(
+        <Slider
+            audioContext={context}
+            min={40}
+            max={800}
+        >
+            {value =>
+                <AudioGraph>
+                    <Oscillator
+                        frequency={value}
+                        type="square"
+                    />
+                    <Gain gain={0.2} />
+                    <Destination />
+                </AudioGraph>
+            }
+        </Slider>,
+        document.querySelector('#react-target'),
+    );
+});

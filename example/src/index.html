@@ -8,7 +8,24 @@
         <main>
             <h1>Wax Example</h1>
             <p>Turn your speakers up!</p>
+            <button id="start">Resume audio context and start!</button>
             <section id="react-target"></section>
+            <script>
+                'use strict';
+
+                const button = document.body.querySelector('#start');
+                const audioContext = new AudioContext();
+                let resumptionCallback = () => undefined;
+
+                const onAudioContextResumed = callback => {
+                    resumptionCallback = callback;
+                };
+
+                button.onclick = () => {
+                    audioContext.resume();
+                    resumptionCallback(audioContext);
+                };
+            </script>
             <script src="/index.js"></script>
         </main>
     </body>

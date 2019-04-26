@@ -1,4 +1,7 @@
 module.exports = {
+    "globals": {
+        "onAudioContextResumed": "readable",
+    },
     "env": {
         "browser": true,
         "es6": true,
