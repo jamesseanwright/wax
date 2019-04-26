@@ -13,6 +13,9 @@
             <script>
                 'use strict';
 
+                /* Workaround for Chrome's Web Audio autoplay
+                 * policy. See the README for more info. */
+
                 const button = document.body.querySelector('#start');
                 const audioContext = new AudioContext();
                 let resumptionCallback = () => undefined;
