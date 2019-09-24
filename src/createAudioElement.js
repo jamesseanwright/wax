@@ -37,7 +37,7 @@ const createAudioElement = (Component, props, ...children) =>
                 : result;
 
         /* we want to render children first so the nodes
-         * can be directly manipulated by their parents */
+         * can be directly consumed by their parents */
         const createChildren = children => children.map(mapResult);
         const existingNode = getNodeFromTree(nodeTree);
 
