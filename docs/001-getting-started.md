@@ -49,7 +49,7 @@ import {
 } from 'wax-core';
 ```
 
-Why are we importing this is we aren't calling it anywhere? Oh, but we are; when our JSX is transpiled, it'll resolve to invocations of `createAudioElement`. It is the Wax equivalent of `React.createAudioElement`, and follows the exact same signature!
+Why are we importing this is we aren't calling it anywhere? Oh, but we are; when our JSX is transpiled, it'll resolve to invocations of `createAudioElement`. It is the Wax equivalent of `React.createElement`, and follows the exact same signature!
 
 ```js
 renderAudioGraph(
